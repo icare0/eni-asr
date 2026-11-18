@@ -1,7 +1,0 @@
-* [🏠 Accueil](/)
-* [🔍 Index Thématique](/index-thematique.md)
-* [📘 Année 1](/annee-1/)
-* [🔬 Ateliers TP](/ateliers/)
-* [🚀 Année 2](/annee-2/)
-* [🛠️ Mémos](/memos/consoles-mmc-raccourcis.md)
-* [🐙 GitHub](https://github.com/icare0/eni-asr)

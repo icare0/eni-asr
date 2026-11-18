@@ -1,253 +1,44 @@
-# 🎓 Cursus Administrateur Systèmes & Réseaux (2 Ans)
+# Documentation ASR — Administrateur Systèmes & Réseaux
 
-> **Base de connaissances & documentation de référence** pour le cursus ASR de l'ENI.  
-> Conçu comme un manuel technique exhaustif pour acquérir les compétences réelles d'administrateur en production, comprendre les architectures et préparer le Titre Professionnel.
+Ce portail rassemble l'ensemble des fiches techniques, cours d'architecture et commandes d'exploitation pour les deux années du cursus d'Administrateur Systèmes et Réseaux de l'ENI.
 
----
-
-<p align="center">
-  <span class="pill pill-blue">Titre Pro RNCP Niveau 6 (Bac+2 / Bac+3)</span>
-  <span class="pill pill-green">2 Ans de Cursus ENI</span>
-  <span class="pill pill-purple">Windows Server • Linux • Cisco • Cloud</span>
-  <span class="pill pill-amber">Année 1 en cours</span>
-</p>
+> **Recherche rapide :** Utilisez le champ de recherche dans la colonne de gauche ou consultez l'[Index des commandes et notions](index-thematique.md) pour accéder directement à une notion (`FSMO`, `AGDLP`, `PSO`, `WAC`, `VLAN`, `Storage Spaces`, etc.).
 
 ---
 
-## ⚡ Recherche Rapide & Navigation Efficace
+## 1ère Année : Administration Système & Réseau On-Premises
 
-* 🔍 **[Ouvrir l'Index Thématique A-Z & Mots-clés](/index-thematique.md)** : Retrouvez instantanément le bon chapitre pour n'importe quelle notion (`FSMO`, `AGDLP`, `PSO`, `WAC`, `VLAN`, `LAPS`, `Storage Spaces`, `SYSVOL`...).
-* 🔎 **Recherche plein texte** : Utilisez le champ en haut de la barre latérale pour rechercher une commande ou un concept dans l'intégralité du site.
-* 📂 **Barre latérale en accordéon** : Seule la catégorie consultée s'ouvre pour garder une interface épurée et sans surcharge visuelle.
+Les modules de première année se concentrent sur le déploiement, la gestion des accès et l'administration quotidienne des parcs Windows Server et Linux.
 
----
-
-## 📘 Année 1 : Le Socle Fondamental d'Infrastructure
-
-<div class="card-grid">
-
-  <!-- CARD 1 -->
-  <a href="#/annee-1/environnement-outils" class="doc-card">
-    <div>
-      <div class="doc-card-title">
-        <span>🖥️ 1. Métrologie & Supervision</span>
-      </div>
-      <p class="doc-card-desc">
-        Laboratoire VMware Host-Only, métrologie Perfmon (seuils critiques CPU/RAM/Disque), Windows Admin Center sur port 443 et audit d'événements.
-      </p>
-    </div>
-    <div class="doc-card-footer">
-      <span class="pill pill-blue">Année 1</span>
-      <span>Consulter le guide →</span>
-    </div>
-  </a>
-
-  <!-- CARD 2 -->
-  <a href="#/annee-1/windows-server-ad" class="doc-card">
-    <div>
-      <div class="doc-card-title">
-        <span>🏛️ 2. Architecture AD DS & FSMO</span>
-      </div>
-      <p class="doc-card-desc">
-        Forêt racine, promotion PowerShell, contrôleur réplica CD2 pour la haute disponibilité et maîtrise des 5 rôles FSMO.
-      </p>
-    </div>
-    <div class="doc-card-footer">
-      <span class="pill pill-blue">Année 1</span>
-      <span>Consulter le guide →</span>
-    </div>
-  </a>
-
-  <!-- CARD 3 -->
-  <a href="#/annee-1/gestion-annuaire-asr" class="doc-card">
-    <div>
-      <div class="doc-card-title">
-        <span>👥 3. Gouvernance d'Annuaire & OU</span>
-      </div>
-      <p class="doc-card-desc">
-        Arborescence d'OU hiérarchique en 3 niveaux, gabarits de comptes modèles, filtres LDAP bitwise et topologie des sites physiques.
-      </p>
-    </div>
-    <div class="doc-card-footer">
-      <span class="pill pill-blue">Année 1</span>
-      <span>Consulter le guide →</span>
-    </div>
-  </a>
-
-  <!-- CARD 4 -->
-  <a href="#/annee-1/stockage-partages-agdlp" class="doc-card">
-    <div>
-      <div class="doc-card-title">
-        <span>💾 4. Stockage SMB & Modèle AGDLP</span>
-      </div>
-      <p class="doc-card-desc">
-        Storage Spaces en miroir, cumul restrictif NTFS/Partage, guide définitif de la méthode AGDLP et serveur d'impression réseau.
-      </p>
-    </div>
-    <div class="doc-card-footer">
-      <span class="pill pill-blue">Année 1</span>
-      <span>Consulter le guide →</span>
-    </div>
-  </a>
-
-  <!-- CARD 5 -->
-  <a href="#/annee-1/gpo-securite" class="doc-card">
-    <div>
-      <div class="doc-card-title">
-        <span>🛡️ 5. Stratégies GPO & Sécurité PSO</span>
-      </div>
-      <p class="doc-card-desc">
-        Traitement LSDOU, politiques de mots de passe affinées (PSO), magasin central PolicyDefinitions dans SYSVOL et audit gpresult.
-      </p>
-    </div>
-    <div class="doc-card-footer">
-      <span class="pill pill-blue">Année 1</span>
-      <span>Consulter le guide →</span>
-    </div>
-  </a>
-
-  <!-- CARD 6 -->
-  <a href="#/annee-1/reseau-fondations" class="doc-card">
-    <div>
-      <div class="doc-card-title">
-        <span>🌐 6. Fondations Réseau & Services IP</span>
-      </div>
-      <p class="doc-card-desc">
-        Modèles OSI/TCP-IP, sous-réseaux CIDR/VLSM, négociation DHCP DORA et enregistrements DNS SRV indispensables pour Active Directory.
-      </p>
-    </div>
-    <div class="doc-card-footer">
-      <span class="pill pill-blue">Année 1</span>
-      <span>Consulter le guide →</span>
-    </div>
-  </a>
-
-  <!-- CARD 7 -->
-  <a href="#/annee-1/linux-fondations" class="doc-card">
-    <div>
-      <div class="doc-card-title">
-        <span>🐧 7. Administration Linux & Bash</span>
-      </div>
-      <p class="doc-card-desc">
-        Arborescence FHS, permissions octales chmod, services systemd, scripts d'automatisation Bash et administration distante par clés SSH.
-      </p>
-    </div>
-    <div class="doc-card-footer">
-      <span class="pill pill-blue">Année 1</span>
-      <span>Consulter le guide →</span>
-    </div>
-  </a>
-
-</div>
+| Module | Thématiques abordées | Fiche technique |
+| :--- | :--- | :--- |
+| **01. Métrologie & Supervision** | Virtualisation VMware en Host-Only, métrologie Perfmon (compteurs CPU/RAM/Disque), Windows Admin Center (HTTPS:443), analyse des journaux d'événements. | [Consulter le cours](annee-1/environnement-outils.md) |
+| **02. Active Directory & Rôles FSMO** | Déploiement en PowerShell (`Install-ADDSForest`), tolérance aux pannes avec CD2, gestion du DNS intégré et maîtrise des 5 rôles FSMO (`netdom query fsmo`). | [Consulter le cours](annee-1/windows-server-ad.md) |
+| **03. Gouvernance d'Annuaire & OU** | Arborescence d'Unités d'Organisation en 3 niveaux, gabarits de comptes modèles, filtres LDAP de contrôle, topologie des sites et sous-réseaux IP (`dssite.msc`). | [Consulter le cours](annee-1/gestion-annuaire-asr.md) |
+| **04. Stockage SMB & Modèle AGDLP** | Pools résilients Storage Spaces (miroir), cumul des autorisations NTFS et partage, matrice de droits AGDLP, délégations administratives, serveur d'impression. | [Consulter le cours](annee-1/stockage-partages-agdlp.md) |
+| **05. Stratégies de Groupe (GPO)** | Ordre d'application LSDOU, politiques de mots de passe affinées (PSO en PowerShell), magasin central PolicyDefinitions dans SYSVOL et diagnostic client (`gpresult`). | [Consulter le cours](annee-1/gpo-securite.md) |
+| **06. Fondations Réseau & Services IP** | Modèles OSI et TCP/IP, calculs de sous-réseaux IPv4/IPv6 (CIDR/VLSM), processus d'adressage DHCP (DORA) et enregistrements de service DNS (SRV). | [Consulter le cours](annee-1/reseau-fondations.md) |
+| **07. Administration Linux & Bash** | Arborescence standard FHS, permissions POSIX octales (`chmod`), gestionnaire de services `systemctl`, automatisation par scripts Bash et accès sécurisé SSH. | [Consulter le cours](annee-1/linux-fondations.md) |
 
 ---
 
-## 🚀 Année 2 : Ingénierie, Sécurité Avancée & Cloud
+## 2ème Année : Ingénierie, Sécurité & Cloud
 
-<div class="card-grid">
+Les modules de seconde année traitent de la haute disponibilité, du durcissement d'infrastructure face aux attaques, de l'automatisation et de l'hybridation vers le Cloud.
 
-  <!-- CARD 8 -->
-  <a href="#/annee-2/reseaux-avances-cisco" class="doc-card">
-    <div>
-      <div class="doc-card-title">
-        <span>🔀 1. Réseaux Avancés Cisco</span>
-      </div>
-      <p class="doc-card-desc">
-        VLANs 802.1Q, liens Trunk, routage inter-VLAN, protocole Spanning Tree (RSTP), routage dynamique OSPF et filtrage par ACLs.
-      </p>
-    </div>
-    <div class="doc-card-footer">
-      <span class="pill pill-purple">Année 2</span>
-      <span>Consulter le guide →</span>
-    </div>
-  </a>
-
-  <!-- CARD 9 -->
-  <a href="#/annee-2/haute-disponibilite" class="doc-card">
-    <div>
-      <div class="doc-card-title">
-        <span>🔄 2. Haute Disponibilité (WSFC & DFS)</span>
-      </div>
-      <p class="doc-card-desc">
-        Clusters de basculement Windows Server, gestion du quorum/témoin, réplication de fichiers DFS-R et stratégie de sauvegarde 3-2-1.
-      </p>
-    </div>
-    <div class="doc-card-footer">
-      <span class="pill pill-purple">Année 2</span>
-      <span>Consulter le guide →</span>
-    </div>
-  </a>
-
-  <!-- CARD 10 -->
-  <a href="#/annee-2/securite-durcissement-pki" class="doc-card">
-    <div>
-      <div class="doc-card-title">
-        <span>🔒 3. Sécurité SI, Tiering & PKI</span>
-      </div>
-      <p class="doc-card-desc">
-        Modèle de séparation en couches Tier 0/1/2 contre le vol d'identifiants LSASS, solution LAPS et autorité de certification AD CS.
-      </p>
-    </div>
-    <div class="doc-card-footer">
-      <span class="pill pill-purple">Année 2</span>
-      <span>Consulter le guide →</span>
-    </div>
-  </a>
-
-  <!-- CARD 11 -->
-  <a href="#/annee-2/virtualisation-cloud" class="doc-card">
-    <div>
-      <div class="doc-card-title">
-        <span>☁️ 4. Virtualisation Datacenter & Azure</span>
-      </div>
-      <p class="doc-card-desc">
-        Hyperviseurs bare-metal VMware vSphere (vMotion à chaud, DRS, HA), Proxmox VE et hybridation via Microsoft Entra Connect.
-      </p>
-    </div>
-    <div class="doc-card-footer">
-      <span class="pill pill-purple">Année 2</span>
-      <span>Consulter le guide →</span>
-    </div>
-  </a>
-
-  <!-- CARD 12 -->
-  <a href="#/annee-2/automatisation-devops" class="doc-card">
-    <div>
-      <div class="doc-card-title">
-        <span>🤖 5. Automatisation & DevOps Sysadmin</span>
-      </div>
-      <p class="doc-card-desc">
-        PowerShell orienté objet, gestion d'erreurs try/catch, automatisation sans agent avec Ansible et conteneurs Docker légers.
-      </p>
-    </div>
-    <div class="doc-card-footer">
-      <span class="pill pill-purple">Année 2</span>
-      <span>Consulter le guide →</span>
-    </div>
-  </a>
-
-  <!-- CARD 13 -->
-  <a href="#/annee-2/titre-professionnel-projet" class="doc-card">
-    <div>
-      <div class="doc-card-title">
-        <span>🎯 6. Titre Professionnel ASR (RNCP)</span>
-      </div>
-      <p class="doc-card-desc">
-        Référentiel des compétences AT1 et AT2, rédaction du Dossier Professionnel (DP) et méthodologie de soutenance orale devant le jury.
-      </p>
-    </div>
-    <div class="doc-card-footer">
-      <span class="pill pill-purple">Année 2</span>
-      <span>Consulter le guide →</span>
-    </div>
-  </a>
-
-</div>
+| Module | Thématiques abordées | Fiche technique |
+| :--- | :--- | :--- |
+| **01. Commutation & Routage Cisco** | Segmentation par VLANs 802.1Q, liens Trunk, routage inter-VLAN, protocole anti-boucle Spanning Tree (RSTP), routage dynamique OSPF et listes ACL. | [Consulter le cours](annee-2/reseaux-avances-cisco.md) |
+| **02. Haute Disponibilité (HA / PRA)** | Clusters de basculement Windows Server (WSFC), gestion du quorum et des témoins, réplication de fichiers DFS (DFS-N / DFS-R) et stratégie de sauvegarde 3-2-1. | [Consulter le cours](annee-2/haute-disponibilite.md) |
+| **03. Sécurité SI, Tiering & PKI** | Modèle de séparation administrative en couches (Tier 0/1/2 ANSSI), solution LAPS pour comptes locaux et autorité de certification d'entreprise (AD CS). | [Consulter le cours](annee-2/securite-durcissement-pki.md) |
+| **04. Virtualisation Datacenter & Azure** | Hyperviseurs Type 1 (VMware ESXi / vCenter, vMotion, DRS, HA), Proxmox VE et synchronisation d'identités hybrides avec Microsoft Entra Connect. | [Consulter le cours](annee-2/virtualisation-cloud.md) |
+| **05. Automatisation & DevOps** | Scripting PowerShell orienté objet avec gestion d'erreurs (`try/catch`), gestion de configuration sans agent avec Ansible, conteneurs Docker et Git pour l'infrastructure. | [Consulter le cours](annee-2/automatisation-devops.md) |
+| **06. Titre Professionnel ASR** | Référentiel des compétences AT1 et AT2, constitution du Dossier Professionnel (DP) et préparation de la soutenance orale devant le jury professionnel. | [Consulter le cours](annee-2/titre-professionnel-projet.md) |
 
 ---
 
-## 🛠️ Boîte à Outils & Référentiels Rapides
+## Référentiels & Mémos d'Exploitation
 
-* 🎛️ **[Consoles MMC, Applets .cpl & Raccourcis Clavier](/memos/consoles-mmc-raccourcis.md)** : Ouvrir immédiatement les consoles d'administration (`dsa.msc`, `gpmc.msc`, `eventvwr`) et raccourcis RDP.
-* 📜 **[Mémento PowerShell Administrateur Sysadmin](/memos/powershell-cheatsheet.md)** : Les commandes essentielles pour gérer Active Directory, le stockage, les partages et l'administration distante.
-* 🩺 **[Diagnostic Réseau & Santé Active Directory](/memos/commandes-reseau-diagnostic.md)** : Commandes de dépannage en cas de panne (`netdom`, `nltest`, `Test-NetConnection`, `repadmin`, `dcdiag`).
+* [Consoles MMC et raccourcis d'administration](memos/consoles-mmc-raccourcis.md) : Liste des fichiers `.msc`, applets `.cpl` et raccourcis clavier pour Server Manager et RDP.
+* [Cheatsheet PowerShell Administrateur](memos/powershell-cheatsheet.md) : Commandes d'administration pour Active Directory, le stockage, les partages et PowerShell Remoting.
+* [Commandes de diagnostic réseau et Active Directory](memos/commandes-reseau-diagnostic.md) : Outils de dépannage (`netdom`, `nltest`, `Test-NetConnection`, `repadmin`, `dcdiag`).

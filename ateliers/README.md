@@ -1,43 +1,9 @@
-# 🔬 Guide de la Maquette de Laboratoire (Ateliers Pratiques)
+# Ateliers Pratiques & Travaux Dirigés
 
-Tous les ateliers pratiques (TP01 à TP05) s'appuient sur une maquette de machines virtuelles interconnectées au sein d'un environnement virtualisé sous **VMware Workstation**.
+L'intégralité du contenu technique, des démarches pas à pas et des commandes PowerShell issues des ateliers pratiques est intégrée directement dans les dossiers de cours d'Année 1 :
 
----
-
-## 🗺️ Schéma & Topologie d'Adressage
-
-```
-                       [ Réseau Privé Virtuel VMware : Host-Only ]
-                                 (Plage : 192.168.0.0/16)
-                                            │
-        ┌───────────────────────┬───────────┴───────────┬───────────────────────┐
-        │                       │                       │                       │
-        ▼                       ▼                       ▼                       ▼
-┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐    ┌──────────────────┐
-│       CD1        │    │       CD2        │    │       SRV1       │    │     Win-CL1      │
-│  Contrôleur DC1  │    │  Contrôleur DC2  │    │  Serveur Membre  │    │  Client Windows  │
-│  192.168.21.1/16 │    │  192.168.21.2/16 │    │ 192.168.21.10/16 │    │ 192.168.21.20/16 │
-│  DNS : 127.0.0.1 │    │  DNS : .21.1     │    │ DNS : .21.1      │    │ DNS : .21.1      │
-└──────────────────┘    └──────────────────┘    └──────────────────┘    └──────────────────┘
-```
-
----
-
-## 📋 Inventaire des Machines de la Maquette
-
-| Nom d'Hôte | Système d'Exploitation | Rôle dans l'Infrastructure | Adresse IP / Masque | Serveur DNS |
-| :--- | :--- | :--- | :--- | :--- |
-| **CD1** | Windows Server 2022 | Contrôleur de domaine principal, Serveur DNS intégré, Maître FSMO racine. | `192.168.21.1 /16` | `127.0.0.1` |
-| **CD2** | Windows Server 2022 | Contrôleur additionnel (tolérance aux pannes), Maître RID & Émulateur PDC. | `192.168.21.2 /16` | `192.168.21.1` |
-| **SRV1** | Windows Server 2022 | Serveur membre du domaine, Pool de stockage résilient, Partages SMB, Serveur d'impression, Windows Admin Center. | `192.168.21.10 /16` | `192.168.21.1` |
-| **Win-CL1** | Windows 11 Professionnel | Poste client d'administration distante équipé des outils RSAT. | `192.168.21.20 /16` | `192.168.21.1` |
-
----
-
-## 📑 Récapitulatif des Ateliers
-
-1. [**TP 01 : Infrastructure & Métrologie**](/ateliers/tp01-infrastructure-metrologie.md) : Déploiement initial, collectes de performances `perfmon`, WAC et audit des événements.
-2. [**TP 02 : Création Domaine AD & Rôles FSMO**](/ateliers/tp02-domaine-ad-fsmo.md) : Promotion PowerShell de la forêt, intégration de CD2 et manipulation des rôles FSMO.
-3. [**TP 03 : Société ASR, OU, Sites & LDAP**](/ateliers/tp03-gestion-societe-asr.md) : Création de l'arborescence, comptes modèles, groupes et topologie des sites WAN.
-4. [**TP 04 : Stockage résilient & Modèle AGDLP**](/ateliers/tp04-ressources-agdlp.md) : Storage Spaces, partages SMB, matrice AGDLP, délégations et imprimante réseau.
-5. [**TP 05 : GPO, Sécurité, PSO & SYSVOL**](/ateliers/tp05-gpo-securite-avancee.md) : Déploiement des 6 GPOs, politiques affinées PSO et magasin central ADMX.
+* **Atelier 01 (Métrologie & WAC)** : [1. Virtualisation et métrologie système](/annee-1/environnement-outils.md)
+* **Atelier 02 (Contrôleurs AD & FSMO)** : [2. Active Directory (AD DS) et rôles FSMO](/annee-1/windows-server-ad.md)
+* **Atelier 03 (Société ASR & OU)** : [3. Gouvernance d'annuaire et Unités d'Organisation](/annee-1/gestion-annuaire-asr.md)
+* **Atelier 04 (Storage Spaces & AGDLP)** : [4. Stockage résilient SMB et modèle AGDLP](/annee-1/stockage-partages-agdlp.md)
+* **Atelier 05 (GPO, PSO & SYSVOL)** : [5. Stratégies de groupe (GPO) et sécurité PSO](/annee-1/gpo-securite.md)
