@@ -1,65 +1,91 @@
-# 1. Environnement, Virtualisation & Outils de l'Administrateur
+# 1. Virtualisation d'Infrastructure, Métrologie & Supervision Système
 
-L'efficacité d'un administrateur systèmes et réseaux repose sur la maîtrise de ses outils d'administration, de son environnement de maquettage et de ses instruments de métrologie.
+Ce dossier technique constitue la base opérationnelle de l'administrateur : savoir concevoir un laboratoire d'infrastructure virtualisé, superviser les performances en continu et auditer les événements du système d'exploitation.
 
 ---
 
-## 🖥️ 1. Virtualisation & Maquette sous VMware
+## 🖥️ 1. Architecture de Laboratoire & Virtualisation (VMware)
 
-Pour reproduire fidèlement une architecture d'entreprise sans impacter la production, la virtualisation est incontournable.
+Pour simuler fidèlement une infrastructure d'entreprise (contrôleurs de domaine, serveurs membres, postes clients) sans impacter les équipements de production ni risquer des conflits de baux DHCP sur le réseau physique, la virtualisation est incontournable.
 
-### Les modes de mise en réseau VMware Workstation
-* **Host-Only (Réseau privé hôte)** : Les machines virtuelles communiquent exclusivement entre elles et avec l'hôte physique. Aucun accès Internet direct n'est autorisé. C'est le mode privilégié pour maqueter un domaine Active Directory sans risque d'interférences avec le réseau local physique (ex: conflits de baux DHCP).
+```
+                     [ Réseau Virtuel Privé : Host-Only ]
+                           (Plage IP : 192.168.0.0/16)
+                                        │
+    ┌───────────────────┬───────────────┴───────────────┬───────────────────┐
+    │                   │                               │                   │
+    ▼                   ▼                               ▼                   ▼
+┌──────────────┐ ┌──────────────┐                ┌──────────────┐    ┌──────────────┐
+│     CD1      │ │     CD2      │                │     SRV1     │    │   Win-CL1    │
+│ Contrôleur 1 │ │ Contrôleur 2 │                │Serveur Membre│    │ Client Admin │
+│ 192.168.21.1 │ │ 192.168.21.2 │                │192.168.21.10 │    │192.168.21.20 │
+└──────────────┘ └──────────────┘                └──────────────┘    └──────────────┘
+```
+
+### Modes de Mise en Réseau VMware Workstation
+* **Host-Only (Réseau privé hôte)** : Les machines virtuelles sont connectées sur un commutateur virtuel isolé (`VMnet1`). Elles communiquent exclusivement entre elles et avec la machine hôte. Aucun paquet n'est routé vers Internet, ce qui garantit une isolation totale.
 * **NAT (Network Address Translation)** : Les VMs partagent l'adresse IP de l'hôte pour accéder à Internet tout en étant invisibles depuis l'extérieur.
 * **Bridged (Pont)** : La VM est branchée directement sur la carte réseau physique de l'hôte et obtient une adresse IP sur le même sous-réseau physique.
 
 ---
 
-## 🎛️ 2. Les Outils d'Administration Windows
+## 📊 2. Métrologie & Analyse de Performances (`perfmon.msc`)
 
-### Le Gestionnaire de Serveur (Server Manager)
-Le tableau de bord central sous Windows Server permet d'ajouter des rôles et fonctionnalités, de surveiller l'état des services et de lancer les outils d'administration.
+En entreprise, l'analyseur de performances (*Performance Monitor*) permet de qualifier la charge d'un serveur avant et après la mise en production, d'identifier les goulots d'étranglement et de dimensionner les ressources matérielles.
 
-### Les Consoles MMC (Microsoft Management Console)
-Les consoles `.msc` sont les briques modulaires historiques de Windows :
-* `compmgmt.msc` : Gestion de l'ordinateur (Disques, Dossiers partagés, Utilisateurs locaux).
-* `eventvwr.msc` : Observateur d'événements.
-* `perfmon.msc` : Analyseur de performances.
-* `services.msc` : Gestionnaire des services système.
+### Les Compteurs Essentiels à Auditer
 
-### Windows Admin Center (WAC)
-Solution web moderne et légère développée par Microsoft pour administrer des serveurs Windows Server et clusters depuis un simple navigateur :
-* Fonctionne en architecture passerelle (écoute sur le port HTTPS 443 ou 6516).
-* Permet de gérer les machines distantes via PowerShell Remoting et WMI over WinRM.
-* Fournit une interface unifiée pour le monitoring, le pare-feu, les mises à jour Windows Update, le stockage et les fichiers sans nécessiter de session RDP complète.
-
----
-
-## 📊 3. Métrologie & Analyse de Performances (Perfmon)
-
-L'analyseur de performances (`perfmon.msc`) permet de diagnostiquer les goulots d'étranglement matériels et logiciels.
-
-### Les Compteurs Clés à Surveiller
-
-| Sous-système | Compteur | Signification & Seuil d'alerte |
+| Sous-Système | Compteur de Performance | Rôle & Seuil d'Alerte en Production |
 | :--- | :--- | :--- |
-| **Processeur** | `% temps processeur` | Taux d'occupation global du CPU. Alerte si > 80% sur une période prolongée. |
-| **Processeur** | `% temps d’inactivité` | Temps disponible restant du processeur. |
-| **Mémoire** | `Mémoire disponible (Mo)` | Quantité de RAM immédiatement disponible pour les processus. |
-| **Mémoire** | `Pages/s` | Échanges entre la RAM physique et le fichier d'échange (swap). Une valeur élevée persistante indique un manque critique de mémoire vive. |
-| **Disque physique** | `Temps moyen de lecture / écriture (s)` | Latence des I/O disque. Doit rester inférieure à 15-20 ms. |
-| **Disque physique** | `% temps disque` | Pourcentage de temps où le disque est occupé à traiter des requêtes. |
+| **Processeur** | `% temps processeur` (*% Processor Time*) | Mesure le temps pendant lequel le processeur exécute des threads actifs. **Seuil critique si > 80%** en moyenne prolongée. |
+| **Processeur** | `% temps d’inactivité` (*% Idle Time*) | Pourcentage de disponibilité restante pour absorber une surcharge ponctuelle. |
+| **Mémoire** | `Mémoire disponible (Mo)` (*Available MBytes*) | Quantité de mémoire vive physique immédiatement disponible. Doit rester supérieure à 10-15% de la RAM totale. |
+| **Mémoire** | `Pages/s` (*Memory Pages/sec*) | Nombre de pages lues ou écrites sur le disque pour résoudre les défauts de page matériels (échanges RAM ↔ swap). Une valeur élevée persistante (> 20-50 pages/s) indique un manque critique de RAM physique. |
+| **Disque Physique** | `Temps moyen de lecture / écriture (s)` | Latence d'accès aux blocs disque. Doit impérativement rester **inférieure à 15-20 ms**. Au-delà, les applications ralentissent fortement. |
+| **Disque Physique** | `% temps disque` (*% Disk Time*) | Pourcentage de temps pendant lequel le disque est sollicité par des I/O. |
 
-### Les Ensembles de Collecteurs de Données
-Plutôt qu'une observation ponctuelle à l'écran, l'administrateur crée un ensemble de collecteurs :
-* **Planification différée** : Déclencher la collecte lors des pics d'activité (ex: 08h30 - 11h30).
-* **Nommage dynamique** : Utiliser les variables d'horodatage (`CompteurBase-AAMMJJ`) pour archiver automatiquement les fichiers de traces (`.blg` ou `.csv`) dans `C:\PerfLogs`.
+### Automatisation d'une Collecte Programmée de Performances
+Plutôt que d'observer les compteurs en temps réel, l'administrateur configure un **Ensemble de collecteurs de données défini par l'utilisateur** :
+1. **Emplacement de stockage** : Racine dédiée, par exemple `C:\PerfLogs`.
+2. **Nommage dynamique automatique** : `CompteurBase-AAMMJJ` (permet de générer un sous-dossier horodaté par jour sans risque d'écrasement).
+3. **Planification et échantillonnage** :
+   * Lancement différé (ex: début de journée à 08h30).
+   * Intervalle d'échantillonnage : 15 secondes.
+   * Durée de collecte : 10 minutes pendant les pics d'activité.
+   * Répétition programmée du lundi au vendredi.
 
 ---
 
-## 🔍 4. Audit & Observateur d'Événements (Event Viewer)
+## 🌐 3. Administration Moderne avec Windows Admin Center (WAC)
 
-Accessible via `eventvwr.msc`, il consigne l'ensemble des journaux d'activité :
-* **Journal Application** : Rapports des logiciels installés, services métiers et installateurs (ex. source `MsiInstaller` pour tracer la date, l'heure et la version exacte d'un package logiciel déployé).
-* **Journal Sécurité** : Tentatives de connexion (succès/échecs 4624/4625), modifications d'annuaire et élévations de privilèges.
-* **Journal Système** : Événements générés par le noyau Windows, pilotes matériels et services de base du système d'exploitation.
+**Windows Admin Center** est l'interface web de gestion de nouvelle génération développée par Microsoft pour administrer des serveurs Windows Server et des clusters sans recourir à des sessions RDP lourdes.
+
+### Caractéristiques d'Architecture
+* **Passerelle Web légère** : S'installe sous forme d'un service Windows écoutant sur le port sécurisé **HTTPS 443** (ou port personnalisé 6516).
+* **Communication sans agent** : Pilote les serveurs distants via les protocoles standards **PowerShell Remoting** et **WMI over WinRM** (Windows Remote Management).
+* **Sécurité & Accès** : Validation des sessions via des certificats SSL/TLS et prise en charge de l'authentification multifacteur (MFA).
+
+### Cas d'Usage Opérationnels
+* **Gestion du Bureau à distance (RDP)** : Activation ou désactivation du service RDP à distance en un clic.
+* **Supervision multi-serveurs** : Ajout centralisé de l'ensemble des contrôleurs de domaine (CD1, CD2) et serveurs membres (SRV1) dans une console unique.
+* **Gestion des pare-feu et mises à jour** : Visualisation instantanée de l'état du pare-feu Windows Defender et application des correctifs Windows Update.
+
+---
+
+## 🔍 4. Audit & Diagnostic Système via l'Observateur d'Événements
+
+Accessible via la commande `eventvwr.msc`, l'Observateur d'événements consigne l'ensemble des activités système, applicatives et de sécurité.
+
+### Structure des Journaux Windows Principaux
+* **Journal Application** : Rapports émis par les applications installées et les services métiers.
+* **Journal Sécurité** : Traces des ouvertures de session (succès code `4624`, échecs code `4625`), modifications d'annuaire et élévations de privilèges.
+* **Journal Système** : Événements générés par le système d'exploitation Windows, le noyau et les pilotes de périphériques.
+
+### Cas Pratique : Auditer un Déploiement Logiciel
+Pour vérifier la conformité d'une installation logicielle déployée via un package Windows Installer (`.msi`) :
+1. Ouvrir le journal **Application**.
+2. Appliquer un filtre d'affichage sur la source d'événement **`MsiInstaller`**.
+3. Les événements de code `1033` ou `11707` confirment le succès de l'installation et précisent :
+   * La date et l'heure exactes de l'opération.
+   * Le code GUID unique du produit.
+   * Le numéro de version précis déployé.

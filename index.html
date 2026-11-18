@@ -4,173 +4,347 @@
   <meta charset="UTF-8">
   <title>ENI ASR — Cursus Administrateur Systèmes et Réseaux (2 Ans)</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Portail de documentation et base de connaissances sur 2 ans du cursus Administrateur Systèmes et Réseaux de l'ENI.">
+  <meta name="description" content="Base de connaissances et documentation de référence sur 2 ans pour le cursus Administrateur Systèmes et Réseaux de l'ENI.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
   <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Theme: Docsify Themeable -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/css/theme-simple-dark.css">
+  <!-- Base Theme: vue theme with custom overrides -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   
   <!-- Sidebar Collapse Plugin CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
 
   <style>
+    /* HIGH-CONTRAST PROFESSIONAL DARK THEME */
     :root {
-      /* Typography */
-      --base-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --code-font-family: 'JetBrains Mono', Consolas, Monaco, monospace;
-      --base-font-size: 15px;
-      --base-line-height: 1.65;
-
-      /* Dark Palette */
-      --theme-color: #3b82f6;
-      --base-background-color: #090d16;
-      --content-max-width: 980px;
-
-      /* Sidebar */
-      --sidebar-width: 310px;
-      --sidebar-background: #0f172a;
-      --sidebar-border-color: #1e293b;
-      --sidebar-nav-link-color: #94a3b8;
-      --sidebar-nav-link-color--active: #60a5fa;
-      --sidebar-nav-link-font-weight--active: 600;
-      --sidebar-nav-link-color--hover: #f1f5f9;
-
-      /* Code Blocks */
-      --code-theme-background: #030712;
-      --code-theme-text: #e2e8f0;
-      --code-inline-background: #1e293b;
-      --code-inline-color: #93c5fd;
-
-      /* Tables & Borders */
-      --table-cell-border-color: #1e293b;
-      --table-head-border-color: #334155;
-      --table-head-background: #1e293b;
-      --hr-border-color: #1e293b;
-      --blockquote-border-color: #3b82f6;
+      --bg-main: #0b0f19;
+      --bg-sidebar: #0f172a;
+      --bg-card: #131d31;
+      --border-color: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --text-dim: #64748b;
+      --accent: #38bdf8;
+      --accent-hover: #7dd3fc;
+      --accent-active: #0284c7;
+      --code-bg: #030712;
     }
 
-    /* Navbar Modern Styling */
+    body {
+      background-color: var(--bg-main) !important;
+      color: var(--text-main) !important;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+      font-size: 15px !important;
+      line-height: 1.7 !important;
+    }
+
+    /* Headings */
+    h1, h2, h3, h4, h5, h6 {
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      letter-spacing: -0.02em !important;
+    }
+    h1 {
+      font-size: 2.2rem !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      padding-bottom: 0.6rem !important;
+      margin-top: 1rem !important;
+      margin-bottom: 1.5rem !important;
+    }
+    h2 {
+      font-size: 1.5rem !important;
+      border-bottom: 1px solid #1e293b !important;
+      padding-bottom: 0.4rem !important;
+      margin-top: 2rem !important;
+      margin-bottom: 1rem !important;
+    }
+    h3 {
+      font-size: 1.2rem !important;
+      margin-top: 1.5rem !important;
+      color: #38bdf8 !important;
+    }
+
+    /* Links */
+    a {
+      color: var(--accent) !important;
+      text-decoration: none !important;
+      transition: color 0.15s ease !important;
+    }
+    a:hover {
+      color: var(--accent-hover) !important;
+      text-decoration: underline !important;
+    }
+
+    /* Content Area */
+    .content {
+      padding-top: 20px;
+    }
+    .markdown-section {
+      max-width: 980px !important;
+      padding: 30px 45px 80px 45px !important;
+      margin: 0 auto !important;
+      color: var(--text-main) !important;
+    }
+    .markdown-section p, .markdown-section li {
+      color: #cbd5e1 !important;
+      font-size: 0.96rem !important;
+    }
+    .markdown-section strong {
+      color: #ffffff !important;
+      font-weight: 600 !important;
+    }
+
+    /* SIDEBAR STYLING */
+    .sidebar {
+      background-color: var(--bg-sidebar) !important;
+      border-right: 1px solid var(--border-color) !important;
+      width: 320px !important;
+      padding: 20px 0 !important;
+    }
+    .sidebar-nav {
+      padding: 0 16px !important;
+    }
+    .sidebar-nav ul {
+      margin: 0 !important;
+      padding-left: 12px !important;
+    }
+    .sidebar-nav li {
+      margin: 4px 0 !important;
+      font-size: 13.5px !important;
+    }
+    .sidebar-nav a {
+      color: var(--text-muted) !important;
+      font-size: 13.5px !important;
+      padding: 6px 10px !important;
+      border-radius: 6px !important;
+      display: block !important;
+      line-height: 1.4 !important;
+      text-decoration: none !important;
+    }
+    .sidebar-nav a:hover {
+      color: #ffffff !important;
+      background: #1e293b !important;
+      text-decoration: none !important;
+    }
+    .sidebar-nav li.active > a {
+      color: #ffffff !important;
+      background: #0284c7 !important;
+      font-weight: 600 !important;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3) !important;
+    }
+
+    /* App Name in Sidebar */
+    .app-name {
+      padding: 10px 20px 15px 20px !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      margin-bottom: 15px !important;
+    }
+    .app-name-link {
+      font-size: 1.15rem !important;
+      font-weight: 800 !important;
+      color: #ffffff !important;
+      letter-spacing: -0.02em !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 8px !important;
+      text-decoration: none !important;
+    }
+
+    /* SEARCH BAR */
+    .sidebar .search {
+      padding: 0 16px 15px 16px !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      margin-bottom: 15px !important;
+    }
+    .sidebar .search input {
+      background: #0b0f19 !important;
+      border: 1px solid #334155 !important;
+      border-radius: 8px !important;
+      color: #ffffff !important;
+      font-size: 13px !important;
+      padding: 8px 12px !important;
+      width: 100% !important;
+      outline: none !important;
+    }
+    .sidebar .search input:focus {
+      border-color: #38bdf8 !important;
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.2) !important;
+    }
+
+    /* NAVBAR */
     .app-nav {
-      margin: 18px 30px 0 0;
-    }
-    .app-nav li {
-      font-size: 13px;
-      font-weight: 500;
+      top: 15px !important;
+      right: 35px !important;
     }
     .app-nav a {
       color: #94a3b8 !important;
-      padding: 6px 12px;
-      border-radius: 6px;
-      transition: all 0.2s;
+      font-size: 13px !important;
+      font-weight: 600 !important;
+      padding: 6px 12px !important;
+      border-radius: 6px !important;
+      transition: all 0.2s !important;
+      background: rgba(15, 23, 42, 0.6) !important;
+      border: 1px solid #1e293b !important;
     }
     .app-nav a:hover {
       color: #ffffff !important;
-      background: #1e293b;
+      background: #1e293b !important;
+      border-color: #38bdf8 !important;
+      text-decoration: none !important;
     }
 
-    /* Sidebar Header & Brand */
-    .app-name-link {
-      font-weight: 800 !important;
-      font-size: 1.15rem !important;
-      letter-spacing: -0.025em;
-      background: linear-gradient(135deg, #60a5fa 0%, #a855f7 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      padding: 10px 0;
-      display: block;
+    /* CODE BLOCKS */
+    .markdown-section pre {
+      background: var(--code-bg) !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 10px !important;
+      padding: 1.25rem 1.5rem !important;
+      position: relative !important;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+    }
+    .markdown-section code {
+      font-family: 'JetBrains Mono', Consolas, monospace !important;
+      font-size: 0.88rem !important;
+    }
+    .markdown-section p code, .markdown-section li code {
+      background: #1e293b !important;
+      color: #7dd3fc !important;
+      padding: 2px 7px !important;
+      border-radius: 5px !important;
+      border: 1px solid #334155 !important;
+      font-weight: 500 !important;
     }
 
-    /* Modern Card Grids in Markdown */
-    .hub-grid {
+    /* TABLES */
+    .markdown-section table {
+      width: 100% !important;
+      border-collapse: separate !important;
+      border-spacing: 0 !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 10px !important;
+      overflow: hidden !important;
+      margin: 1.5rem 0 !important;
+    }
+    .markdown-section th {
+      background: #1e293b !important;
+      color: #ffffff !important;
+      font-weight: 700 !important;
+      font-size: 0.88rem !important;
+      padding: 12px 16px !important;
+      border-bottom: 2px solid #334155 !important;
+      text-align: left !important;
+    }
+    .markdown-section td {
+      padding: 12px 16px !important;
+      border-bottom: 1px solid #1e293b !important;
+      font-size: 0.88rem !important;
+      color: #cbd5e1 !important;
+    }
+    .markdown-section tr:nth-child(even) td {
+      background: rgba(30, 41, 59, 0.3) !important;
+    }
+    .markdown-section tr:last-child td {
+      border-bottom: none !important;
+    }
+
+    /* GITHUB STYLE ALERTS / CALLOUTS */
+    .markdown-section blockquote {
+      border-left: 4px solid #38bdf8 !important;
+      background: rgba(56, 189, 248, 0.08) !important;
+      color: #e2e8f0 !important;
+      padding: 1rem 1.25rem !important;
+      margin: 1.5rem 0 !important;
+      border-radius: 0 8px 8px 0 !important;
+    }
+
+    /* HUB DASHBOARD CARDS IN MARKDOWN */
+    .card-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
       gap: 1.25rem;
-      margin: 1.5rem 0 2.5rem 0;
+      margin: 2rem 0;
     }
-
-    .hub-card {
-      background: #0f172a;
+    .doc-card {
+      background: #131d31;
       border: 1px solid #1e293b;
       border-radius: 12px;
       padding: 1.25rem;
-      transition: all 0.2s ease-in-out;
       text-decoration: none !important;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
     }
-
-    .hub-card:hover {
-      border-color: #3b82f6;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.15);
+    .doc-card:hover {
+      border-color: #38bdf8;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.15);
+      background: #17243c;
     }
-
-    .hub-card-title {
+    .doc-card-title {
       font-weight: 700;
       font-size: 1.05rem;
-      color: #f8fafc !important;
+      color: #ffffff !important;
       margin-bottom: 0.5rem;
       display: flex;
       align-items: center;
       gap: 0.5rem;
     }
-
-    .hub-card-desc {
-      font-size: 0.85rem;
-      color: #94a3b8;
-      line-height: 1.5;
-      margin-bottom: 1rem;
+    .doc-card-desc {
+      font-size: 0.85rem !important;
+      color: #94a3b8 !important;
+      line-height: 1.5 !important;
+      margin-bottom: 1rem !important;
     }
-
-    .hub-card-footer {
+    .doc-card-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-top: 1px solid #1e293b;
       padding-top: 0.75rem;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       font-weight: 600;
-      color: #60a5fa;
+      color: #38bdf8;
     }
 
-    /* Tag Badges */
-    .tag {
+    /* BADGES */
+    .pill {
       display: inline-block;
-      padding: 0.2rem 0.55rem;
+      padding: 0.2rem 0.6rem;
       border-radius: 9999px;
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
     }
-    .tag-blue { background: rgba(59, 130, 246, 0.15); color: #93c5fd; border: 1px solid rgba(59, 130, 246, 0.3); }
-    .tag-green { background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
-    .tag-purple { background: rgba(168, 85, 247, 0.15); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.3); }
-    .tag-amber { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .pill-blue { background: rgba(56, 189, 248, 0.15); color: #7dd3fc; border: 1px solid rgba(56, 189, 248, 0.3); }
+    .pill-green { background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .pill-purple { background: rgba(168, 85, 247, 0.15); color: #d8b4fe; border: 1px solid rgba(168, 85, 247, 0.3); }
+    .pill-amber { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.3); }
 
-    /* Search Input Styling */
-    .sidebar .search input {
-      border: 1px solid #334155;
-      background: #090d16;
-      border-radius: 8px;
-      color: #f1f5f9;
-      font-size: 13px;
-      padding: 8px 12px;
+    /* COPY CODE BUTTON */
+    .docsify-copy-code-button {
+      background: #1e293b !important;
+      color: #94a3b8 !important;
+      border: 1px solid #334155 !important;
+      border-radius: 6px !important;
+      font-size: 11px !important;
+      font-weight: 600 !important;
+      padding: 4px 8px !important;
     }
-    .sidebar .search input:focus {
-      border-color: #3b82f6;
-      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+    .docsify-copy-code-button:hover {
+      background: #0284c7 !important;
+      color: #ffffff !important;
     }
   </style>
 </head>
 <body>
-  <div id="app">Chargement du portail ASR...</div>
+  <div id="app">Chargement de la base documentaire ASR...</div>
 
   <script>
     window.$docsify = {
@@ -182,13 +356,13 @@
       auto2top: true,
       homepage: 'README.md',
       
-      // Sidebar Collapse Plugin Config: fold everything except current level
+      // Auto-collapse sidebar levels to keep it neat & clean
       sidebarDisplayLevel: 1,
 
       search: {
         maxAge: 86400000,
         paths: 'auto',
-        placeholder: 'Rechercher un cours, un TP, une commande...',
+        placeholder: 'Rechercher un concept, une commande, un cours...',
         noData: 'Aucun résultat trouvé.',
         depth: 4
       },
@@ -210,22 +384,22 @@
 
   <!-- Docsify Core -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify-themeable@0/dist/js/docsify-themeable.min.js"></script>
 
   <!-- Sidebar Collapse Plugin -->
   <script src="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/docsify-sidebar-collapse.min.js"></script>
 
-  <!-- Search & Copy & Pagination Plugins -->
+  <!-- Search & Copy Code & Pagination Plugins -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2/dist/docsify-copy-code.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify-pagination@2/dist/docsify-pagination.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/zoom-image.min.js"></script>
 
-  <!-- Prism Syntax Highlighting -->
+  <!-- Syntax Highlighting with Prism.js -->
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-powershell.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-batch.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-cisco.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
 </body>
 </html>
