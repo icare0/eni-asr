@@ -2,133 +2,177 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Documentation ASR — Administrateur Systèmes & Réseaux</title>
+  <title>ASR — Documentation & Travaux Pratiques (ENI)</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Documentation technique et fiches pratiques pour le cursus ASR de l'ENI.">
+  <meta name="description" content="Base documentaire technique et synthèse des travaux pratiques du cursus Administrateur Systèmes et Réseaux à l'ENI.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-  <!-- Polices : Inter & JetBrains Mono -->
+  <!-- Polices système & monospace -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
   <!-- Base Theme Docsify -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
   
+  <!-- Prism Syntax Highlighting Theme (Dark) -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.min.css">
+
   <!-- Sidebar Collapse Plugin CSS -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify-sidebar-collapse/dist/sidebar.min.css" />
 
   <style>
-    /* THEME SYSTEME SOMBRE HAUT CONTRASTE (STYLE DOC TECHNIQUE MODERNE) */
+    /* SYSTEME DE DESIGN TECHNIQUE SOMBRE - HAUTE LISIBILITE (STYLE GITHUB / MICROSOFT LEARN) */
     :root {
-      --bg-content: #090d16;
-      --bg-sidebar: #0f172a;
-      --border: #1e293b;
-      --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --heading: #ffffff;
-      --link: #38bdf8;
-      --code-bg: #030712;
+      --bg-canvas: #0d1117;
+      --bg-surface: #161b22;
+      --bg-surface-hover: #21262d;
+      --border-color: #30363d;
+      --border-muted: #21262d;
+      --text-primary: #f0f6fc;
+      --text-secondary: #c9d1d9;
+      --text-muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-hover: #79c0ff;
+      --code-bg: #161b22;
+      --code-inline-bg: #21262d;
+      --sidebar-width: 280px;
     }
 
     * {
       box-sizing: border-box;
     }
 
-    body {
-      background-color: var(--bg-content) !important;
-      color: var(--text) !important;
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+    html, body {
+      background-color: var(--bg-canvas) !important;
+      color: var(--text-secondary) !important;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif !important;
       font-size: 15px !important;
-      line-height: 1.7 !important;
+      line-height: 1.65 !important;
       margin: 0 !important;
+      padding: 0 !important;
     }
 
-    /* Supprimer tout ruban GitHub en haut à droite */
+    /* Supprimer le ruban GitHub */
     .github-corner {
       display: none !important;
     }
 
-    /* Titres */
+    /* TYPOGRAPHIE ET TITRES */
     h1, h2, h3, h4, h5, h6 {
-      color: var(--heading) !important;
-      font-weight: 700 !important;
-      letter-spacing: -0.015em !important;
+      color: var(--text-primary) !important;
+      font-weight: 600 !important;
+      letter-spacing: -0.01em !important;
     }
     h1 {
-      font-size: 1.95rem !important;
-      border-bottom: 1px solid var(--border) !important;
-      padding-bottom: 0.6rem !important;
+      font-size: 1.85rem !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      padding-bottom: 0.5rem !important;
       margin-top: 0 !important;
-      margin-bottom: 1.5rem !important;
+      margin-bottom: 1.25rem !important;
     }
     h2 {
-      font-size: 1.4rem !important;
-      border-bottom: 1px solid var(--border) !important;
-      padding-bottom: 0.4rem !important;
-      margin-top: 2.2rem !important;
-      margin-bottom: 1rem !important;
+      font-size: 1.35rem !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      padding-bottom: 0.35rem !important;
+      margin-top: 2rem !important;
+      margin-bottom: 0.85rem !important;
     }
     h3 {
-      font-size: 1.15rem !important;
-      margin-top: 1.6rem !important;
-      color: #7dd3fc !important;
+      font-size: 1.1rem !important;
+      margin-top: 1.5rem !important;
+      margin-bottom: 0.6rem !important;
+      color: var(--accent) !important;
+    }
+    h4 {
+      font-size: 1rem !important;
+      color: var(--text-primary) !important;
     }
 
-    /* Liens */
-    a {
-      color: var(--link) !important;
-      text-decoration: none !important;
-      transition: color 0.15s ease !important;
-    }
-    a:hover {
-      text-decoration: underline !important;
-      color: #7dd3fc !important;
-    }
-
-    /* Zone de contenu principale */
-    .content {
-      padding-top: 0 !important;
-      position: relative !important;
-      left: 300px !important;
-      max-width: calc(100% - 300px) !important;
-    }
-    .markdown-section {
-      max-width: 960px !important;
-      padding: 40px 45px 80px 45px !important;
-      margin: 0 auto !important;
-    }
-    .markdown-section p, .markdown-section li {
-      color: #cbd5e1 !important;
+    p, li {
+      color: var(--text-secondary) !important;
       font-size: 0.95rem !important;
     }
-    .markdown-section strong {
-      color: #ffffff !important;
+    strong, b {
+      color: var(--text-primary) !important;
       font-weight: 600 !important;
     }
+    hr {
+      border: 0 !important;
+      border-top: 1px solid var(--border-color) !important;
+      margin: 2rem 0 !important;
+    }
 
-    /* SIDEBAR */
+    /* LIENS */
+    a {
+      color: var(--accent) !important;
+      text-decoration: none !important;
+      transition: color 0.1s ease !important;
+    }
+    a:hover {
+      color: var(--accent-hover) !important;
+      text-decoration: underline !important;
+    }
+
+    /* DISPOSITION CENTRÉE & LARGEUR OPTIMALE */
+    .content {
+      position: relative !important;
+      left: var(--sidebar-width) !important;
+      max-width: calc(100% - var(--sidebar-width)) !important;
+      padding-top: 0 !important;
+      transition: left 0.2s ease, max-width 0.2s ease !important;
+    }
+    body.close .content {
+      left: 0 !important;
+      max-width: 100% !important;
+    }
+    .markdown-section {
+      max-width: 840px !important;
+      margin: 0 auto !important;
+      padding: 40px 32px 80px 32px !important;
+    }
+
+    /* BARRE LATÉRALE (SIDEBAR) */
     .sidebar {
-      background-color: var(--bg-sidebar) !important;
-      border-right: 1px solid var(--border) !important;
-      width: 300px !important;
+      background-color: var(--bg-surface) !important;
+      border-right: 1px solid var(--border-color) !important;
+      width: var(--sidebar-width) !important;
       padding: 0 !important;
       overflow-y: auto !important;
     }
+    .sidebar-toggle {
+      background-color: transparent !important;
+    }
+    .sidebar-toggle span {
+      background-color: var(--accent) !important;
+    }
+    .app-name {
+      padding: 18px 20px 14px 20px !important;
+      margin-bottom: 0 !important;
+      border-bottom: 1px solid var(--border-color) !important;
+    }
+    .app-name-link {
+      font-size: 0.98rem !important;
+      font-weight: 700 !important;
+      color: var(--text-primary) !important;
+      text-decoration: none !important;
+      display: block !important;
+      letter-spacing: 0.02em !important;
+    }
     .sidebar-nav {
-      padding: 0 16px 30px 16px !important;
+      padding: 10px 14px 30px 14px !important;
     }
     .sidebar-nav ul {
       margin: 0 !important;
-      padding-left: 10px !important;
+      padding-left: 8px !important;
     }
     .sidebar-nav li {
-      margin: 3px 0 !important;
+      margin: 2px 0 !important;
       font-size: 13.5px !important;
     }
     .sidebar-nav a {
       color: var(--text-muted) !important;
-      font-size: 13.5px !important;
+      font-size: 13px !important;
       padding: 6px 10px !important;
       border-radius: 6px !important;
       display: block !important;
@@ -136,131 +180,204 @@
       text-decoration: none !important;
     }
     .sidebar-nav a:hover {
-      color: #ffffff !important;
-      background: #1e293b !important;
+      color: var(--text-primary) !important;
+      background: var(--bg-surface-hover) !important;
     }
     .sidebar-nav li.active > a {
       color: #ffffff !important;
-      background: #2563eb !important;
+      background: #1f6feb !important;
       font-weight: 600 !important;
     }
-
-    /* En-tête de la sidebar */
-    .app-name {
-      padding: 20px 20px 15px 20px !important;
-      margin-bottom: 0 !important;
-      border-bottom: 1px solid var(--border) !important;
-    }
-    .app-name-link {
-      font-size: 1.05rem !important;
-      font-weight: 700 !important;
-      color: #ffffff !important;
-      text-decoration: none !important;
+    .sidebar-nav strong {
       display: block !important;
+      font-size: 11px !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.06em !important;
+      color: var(--text-muted) !important;
+      margin-top: 18px !important;
+      margin-bottom: 6px !important;
+      padding-left: 8px !important;
     }
 
-    /* CHAMP DE RECHERCHE INTEGRÉ PRO */
+    /* RECHERCHE PRO INTÉGRÉE DANS LA SIDEBAR */
     .sidebar .search {
-      padding: 14px 16px !important;
-      border-bottom: 1px solid var(--border) !important;
-      margin-bottom: 14px !important;
+      padding: 12px 14px !important;
+      border-bottom: 1px solid var(--border-color) !important;
+      margin-bottom: 8px !important;
     }
     .sidebar .search input {
-      background: #030712 !important;
-      border: 1px solid #334155 !important;
+      background: var(--bg-canvas) !important;
+      border: 1px solid var(--border-color) !important;
       border-radius: 6px !important;
-      color: #ffffff !important;
+      color: var(--text-primary) !important;
       font-size: 13px !important;
-      padding: 8px 12px !important;
+      padding: 7px 12px !important;
       width: 100% !important;
       outline: none !important;
     }
     .sidebar .search input:focus {
-      border-color: #38bdf8 !important;
+      border-color: var(--accent) !important;
+      box-shadow: 0 0 0 1px var(--accent) !important;
     }
     .sidebar .search .clear-button {
-      top: 22px !important;
-      right: 24px !important;
+      top: 18px !important;
+      right: 22px !important;
+    }
+    .sidebar .search .results-panel {
+      background: var(--bg-surface) !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 6px !important;
+      padding: 8px !important;
+    }
+    .sidebar .search .matching-post {
+      border-bottom: 1px solid var(--border-muted) !important;
+      padding: 6px 0 !important;
+    }
+    .sidebar .search .matching-post h2 {
+      color: var(--accent) !important;
+      font-size: 13px !important;
+      margin: 4px 0 !important;
+      border: none !important;
+      padding: 0 !important;
+    }
+    .sidebar .search .matching-post p {
+      color: var(--text-muted) !important;
+      font-size: 12px !important;
+      margin: 2px 0 !important;
     }
 
-    /* CODE BLOCKS */
+    /* BLOCS DE CODE (PRE) */
     .markdown-section pre {
       background: var(--code-bg) !important;
-      border: 1px solid var(--border) !important;
-      border-radius: 8px !important;
-      padding: 1rem 1.25rem !important;
-      margin: 1.5rem 0 !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 6px !important;
+      padding: 14px 16px !important;
+      margin: 1.25rem 0 !important;
+      overflow-x: auto !important;
     }
-    .markdown-section code {
-      font-family: 'JetBrains Mono', Consolas, monospace !important;
-      font-size: 0.88rem !important;
-    }
-    .markdown-section p code, .markdown-section li code {
-      background: #1e293b !important;
-      color: #7dd3fc !important;
-      padding: 2px 6px !important;
-      border-radius: 4px !important;
-      border: 1px solid #334155 !important;
+    .markdown-section pre > code {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      color: var(--text-primary) !important;
+      font-family: 'JetBrains Mono', Consolas, "Courier New", monospace !important;
+      font-size: 13px !important;
+      line-height: 1.55 !important;
+      white-space: pre !important;
     }
 
-    /* TABLEAUX PROPRES SANS SURCHARGE */
+    /* CODE INLINE (TABLEAUX, LISTES, PARAGRAPHES) */
+    .markdown-section code,
+    .markdown-section p code,
+    .markdown-section li code,
+    .markdown-section td code,
+    .markdown-section th code,
+    .markdown-section blockquote code {
+      background-color: var(--code-inline-bg) !important;
+      color: #79c0ff !important;
+      border: 1px solid var(--border-color) !important;
+      border-radius: 4px !important;
+      padding: 2px 6px !important;
+      font-family: 'JetBrains Mono', Consolas, monospace !important;
+      font-size: 0.86em !important;
+      font-weight: 400 !important;
+      word-break: break-word !important;
+    }
+
+    /* TABLEAUX : HAUTE LISIBILITE ET CONTRASTE ASSURÉ */
     .markdown-section table {
       width: 100% !important;
       border-collapse: collapse !important;
-      border: 1px solid var(--border) !important;
-      border-radius: 6px !important;
+      border-spacing: 0 !important;
+      border: 1px solid var(--border-color) !important;
       margin: 1.5rem 0 !important;
+      display: table !important;
+      background-color: var(--bg-canvas) !important;
+    }
+    .markdown-section tr {
+      background-color: var(--bg-canvas) !important;
+      border-top: 1px solid var(--border-color) !important;
+    }
+    .markdown-section tr:nth-child(2n),
+    .markdown-section tr:nth-child(even) {
+      background-color: var(--bg-surface) !important;
     }
     .markdown-section th {
-      background: #1e293b !important;
-      color: #ffffff !important;
+      background-color: var(--bg-surface-hover) !important;
+      color: var(--text-primary) !important;
       font-weight: 600 !important;
-      font-size: 0.88rem !important;
-      padding: 10px 14px !important;
-      border-bottom: 1px solid #334155 !important;
+      font-size: 13px !important;
+      padding: 9px 12px !important;
+      border: 1px solid var(--border-color) !important;
       text-align: left !important;
     }
     .markdown-section td {
-      padding: 10px 14px !important;
-      border-bottom: 1px solid var(--border) !important;
-      font-size: 0.88rem !important;
-      color: #cbd5e1 !important;
-    }
-    .markdown-section tr:nth-child(even) td {
-      background: rgba(30, 41, 59, 0.25) !important;
+      background-color: transparent !important;
+      color: var(--text-secondary) !important;
+      font-size: 13px !important;
+      line-height: 1.5 !important;
+      padding: 9px 12px !important;
+      border: 1px solid var(--border-color) !important;
     }
 
-    /* ENCADRÉS / CALLOUTS DISCRETS */
+    /* CITATIONS / ENCADRÉS SOBRES (CALLOUTS) */
     .markdown-section blockquote {
-      border-left: 3px solid #38bdf8 !important;
-      background: rgba(56, 189, 248, 0.05) !important;
-      color: #e2e8f0 !important;
-      padding: 0.75rem 1rem !important;
+      border-left: 3px solid #1f6feb !important;
+      background: rgba(31, 111, 235, 0.08) !important;
+      color: var(--text-secondary) !important;
+      padding: 10px 14px !important;
       margin: 1.25rem 0 !important;
-      border-radius: 0 6px 6px 0 !important;
+      border-radius: 0 4px 4px 0 !important;
+    }
+    .markdown-section blockquote p {
+      margin: 0 !important;
+      color: var(--text-secondary) !important;
     }
 
-    /* BOUTON COPIER */
+    /* BOUTON COPIER CODE */
     .docsify-copy-code-button {
-      background: #1e293b !important;
-      color: #94a3b8 !important;
-      border: 1px solid #334155 !important;
+      background: var(--bg-surface-hover) !important;
+      color: var(--text-muted) !important;
+      border: 1px solid var(--border-color) !important;
       border-radius: 4px !important;
       font-size: 11px !important;
-      padding: 4px 8px !important;
+      padding: 3px 8px !important;
     }
     .docsify-copy-code-button:hover {
-      background: #2563eb !important;
+      background: #1f6feb !important;
       color: #ffffff !important;
+    }
+
+    /* PAGINATION EN BAS DE PAGE */
+    .pagination-item {
+      border: 1px solid var(--border-color) !important;
+      border-radius: 6px !important;
+      background: var(--bg-surface) !important;
+      color: var(--text-secondary) !important;
+      padding: 8px 14px !important;
+    }
+    .pagination-item a {
+      color: var(--accent) !important;
+    }
+
+    /* RESPONSIVE SMARTPHONE */
+    @media screen and (max-width: 768px) {
+      .content {
+        left: 0 !important;
+        max-width: 100% !important;
+      }
+      .markdown-section {
+        padding: 24px 16px 60px 16px !important;
+      }
     }
   </style>
 </head>
 <body>
-  <div id="app">Chargement...</div>
+  <div id="app">Initialisation du portail ASR...</div>
 
   <script>
     window.$docsify = {
-      name: 'ASR — ENI (2 Ans)',
+      name: 'ASR — ENI',
       loadSidebar: true,
       loadNavbar: false,
       subMaxLevel: 2,
@@ -273,7 +390,7 @@
         maxAge: 86400000,
         paths: 'auto',
         placeholder: 'Rechercher (ex: FSMO, GPO, AGDLP)...',
-        noData: 'Aucun résultat.',
+        noData: 'Aucun résultat trouvé.',
         depth: 3
       },
 
@@ -307,8 +424,6 @@
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-powershell.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-batch.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-cisco.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-yaml.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-ini.min.js"></script>
 </body>
 </html>

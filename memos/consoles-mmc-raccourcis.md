@@ -1,10 +1,10 @@
-# 🛠️ Consoles MMC, Applets & Raccourcis Clavier
+# Consoles MMC, Applets & Raccourcis Clavier
 
 Ce mémento rassemble l'ensemble des commandes d'exécution directe (`Windows + R`) pour ouvrir instantanément les consoles MMC et applets de configuration, ainsi que les raccourcis clavier indispensables sous Windows Server et en session Bureau à distance (RDP).
 
 ---
 
-## 🎛️ 1. Consoles d'Administration MMC (`.msc`)
+## 1. Consoles d'Administration MMC (`.msc`)
 
 | Commande | Rôle / Console ouverte | Usage courant |
 | :--- | :--- | :--- |
@@ -29,7 +29,7 @@ Ce mémento rassemble l'ensemble des commandes d'exécution directe (`Windows + 
 
 ---
 
-## ⚙️ 2. Applets du Panneau de Configuration (`.cpl`)
+## 2. Applets du Panneau de Configuration (`.cpl`)
 
 | Commande | Applet Ouverte | Usage Rapide |
 | :--- | :--- | :--- |
@@ -40,7 +40,7 @@ Ce mémento rassemble l'ensemble des commandes d'exécution directe (`Windows + 
 
 ---
 
-## ⌨️ 3. Raccourcis Clavier de l'Administrateur
+## 3. Raccourcis Clavier de l'Administrateur
 
 ### Navigation dans les Consoles MMC & l'Annuaire
 * <kbd>F5</kbd> : Actualiser immédiatement l'arborescence ou la vue courante.
@@ -58,7 +58,6 @@ Ce mémento rassemble l'ensemble des commandes d'exécution directe (`Windows + 
 * <kbd>Alt</kbd> + <kbd>A</kbd> : Consulter la tuile Rôles et fonctionnalités.
 
 ### Sessions Bureau à Distance (RDP / `mstsc`)
-* <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Fin</kbd> : Déclencher l'écran de sécurité Windows sur le serveur distant (équivalent du <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Suppr</kbd> local).
-* <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Pause (Break)</kbd> : Basculer la fenêtre RDP entre plein écran et mode fenêtré.
-* <kbd>Alt</kbd> + <kbd>Début</kbd> : Ouvrir le menu Démarrer sur le serveur distant.
-* <kbd>Alt</kbd> + <kbd>Page Préc</kbd> / <kbd>Page Suiv</kbd> : Basculer entre les applications exécutées sur la session distante.
+* <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Fin</kbd> : Équivalent de `Ctrl + Alt + Suppr` dans la machine distante (changement de mot de passe, verrouillage, gestionnaire des tâches).
+* <kbd>Alt</kbd> + <kbd>Début</kbd> : Ouvrir le menu Démarrer de la machine distante.
+* <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Pause</kbd> : Basculer la fenêtre Bureau à distance entre le mode plein écran et le mode fenêtré.

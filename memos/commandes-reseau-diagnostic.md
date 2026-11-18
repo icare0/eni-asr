@@ -1,10 +1,10 @@
-# 🔍 Commandes Réseau, Active Directory & Diagnostic
+# Commandes Réseau, Active Directory & Diagnostic
 
 En cas d'incident en entreprise (lenteur d'authentification, échec d'accès à un partage, problème de réplication), voici la boîte à outils des commandes de diagnostic indispensables.
 
 ---
 
-## 🌐 1. Diagnostic Réseau & Résolution DNS
+## 1. Diagnostic Réseau & Résolution DNS
 
 ### `ipconfig`
 ```cmd
@@ -20,7 +20,7 @@ ipconfig /renew
 ```
 
 ### `Test-NetConnection` (PowerShell)
-Le couteau suisse moderne pour tester la connectivité IP et la disponibilité d'un port TCP précis (remplace avantageusement `telnet`) :
+Le couteau suisse moderne pour tester la connectivité IP et la disponibilité d'un port TCP précis :
 ```powershell
 # Tester si le serveur SRV1 écoute bien sur le port HTTPS 443
 Test-NetConnection -ComputerName "SRV1" -Port 443
@@ -45,7 +45,7 @@ nslookup
 
 ---
 
-## 🏛️ 2. Diagnostic Active Directory & Contrôleurs
+## 2. Diagnostic Active Directory & Contrôleurs
 
 ### `nltest` (Localisation & Sécurisation de Canal)
 ```cmd
@@ -59,40 +59,53 @@ nltest /dsgetdc:domNN.ad
 nltest /sc_query:domNN.ad
 ```
 
-### `netdom` (Gestion de Domaine)
+### `repadmin` (Diagnostic de Réplication Multi-Maîtres)
 ```cmd
-:: Connaître les détenteurs des 5 rôles FSMO
-netdom query fsmo
+:: Résumé rapide de la réplication sur tous les contrôleurs
+repadmin /replsummary
 
-:: Vérifier l'état de confiance d'un ordinateur membre
-netdom verify Win-CL1 /domain:domNN.ad
-```
-
-### `dcdiag` (Diagnostic de Santé des Contrôleurs)
-Exécute une batterie complète de tests d'intégrité sur les contrôleurs de domaine :
-```cmd
-dcdiag /v /c /d /e
-```
-
-### `repadmin` (Audit & Synchronisation de la Réplication)
-```cmd
-:: Afficher l'état de réplication entre CD1 et CD2
+:: Rapport détaillé des liaisons de réplication entrantes et sortantes
 repadmin /showrepl
 
-:: Forcer une réplication immédiate sur tous les partenaires
-repadmin /syncall /AePd
+:: Forcer la réplication immédiate de toutes les partitions
+repadmin /syncall /AdeP
+```
+
+### `dcdiag` (Analyseur de Santé du Contrôleur)
+```cmd
+:: Audit complet du contrôleur local (DNS, SYSVOL, Netlogon, FSMO)
+dcdiag /v
+
+:: Tester spécifiquement la santé du service DNS intégré
+dcdiag /test:DNS
 ```
 
 ---
 
-## 🔌 3. Diagnostic des Ports & Connexions Locales
+## 3. Stratégies de Groupe (GPO)
 
-### `netstat`
 ```cmd
-:: Lister tous les ports en écoute avec le PID du processus associé
-netstat -ano | findstr "LISTENING"
+:: Forcer l'application immédiate des GPO sans attendre le cycle de rafraîchissement
+gpupdate /force
 
-:: Trouver quel programme utilise le port 443
-netstat -ano | findstr ":443"
+:: Afficher la liste des GPO appliquées et rejetées pour l'utilisateur et l'ordinateur
+gpresult /r
+
+:: Générer un rapport d'audit exhaustif au format HTML
+gpresult /h C:\resultat-gpo.html
 ```
-*(Le PID renvoyé en dernière colonne peut ensuite être identifié dans le Gestionnaire des tâches ou via `Get-Process -Id <PID>`)*.
+
+---
+
+## 4. Métrologie & Collecteurs (`logman`)
+
+```cmd
+:: Démarrer manuellement l'ensemble de collecteurs de performances
+logman start "CompteurBase"
+
+:: Afficher la liste et l'état des collecteurs configurés
+logman query
+
+:: Stopper la collecte
+logman stop "CompteurBase"
+```

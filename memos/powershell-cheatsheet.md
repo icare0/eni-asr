@@ -1,10 +1,10 @@
-# 📜 Mémento PowerShell pour Administrateur Sysadmin
+# Mémento PowerShell pour Administrateur Sysadmin
 
 Ce mémento rassemble les cmdlets PowerShell les plus utilisées en administration d'infrastructure Windows Server et Active Directory.
 
 ---
 
-## 👥 1. Gestion des Utilisateurs Active Directory
+## 1. Gestion des Utilisateurs Active Directory
 
 ```powershell
 # Rechercher un utilisateur avec ses propriétés spécifiques
@@ -31,7 +31,7 @@ Set-ADAccountExpiration -Identity "ctalmie" -DateTime (Get-Date "31/12/2026")
 
 ---
 
-## 👥 2. Gestion des Groupes & Membres
+## 2. Gestion des Groupes & Membres
 
 ```powershell
 # Créer un groupe global de sécurité
@@ -52,53 +52,47 @@ Remove-ADGroupMember -Identity "G-Comptabilite" -Members "ctalmie" -Confirm:$fal
 
 ---
 
-## 📂 3. Gestion du Stockage & Partages SMB
+## 3. Gestion du Stockage & Partages SMB
 
 ```powershell
 # Lister les disques physiques bruts disponibles
 Get-Disk | Where-Object OperationalStatus -eq 'Online'
 
-# Initialiser un disque neuf en table de partitionnement GPT
+# Initialiser un nouveau disque en table de partition GPT
 Initialize-Disk -Number 1 -PartitionStyle GPT
 
-# Créer une partition occupant tout l'espace et assigner une lettre
+# Créer une partition NTFS et lui assigner une lettre de lecteur
 New-Partition -DiskNumber 1 -UseMaximumSize -AssignDriveLetter | Format-Volume -FileSystem NTFS -NewFileSystemLabel "DATA"
 
-# Créer un partage SMB avec droits d'accès initiaux
-New-SmbShare -Name "Documentation" `
-             -Path "E:\DATA\Documentation" `
-             -FullAccess "domNN\DL-Documentation-ControleTotal" `
-             -ReadAccess "domNN\DL-Documentation-Lecture"
+# Créer un partage SMB réseau sécurisé
+New-SmbShare -Name "Compta" `
+             -Path "E:\DATA\Compta" `
+             -FullAccess "domNN\DL-Compta-ControleTotal" `
+             -ChangeAccess "domNN\DL-Compta-Modification"
 
-# Lister tous les partages SMB actifs sur le serveur
-Get-SmbShare | Where-Object Special -eq $false
+# Créer un partage administratif masqué (se terminant par $)
+New-SmbShare -Name "Info$" `
+             -Path "E:\DATA\Info$" `
+             -FullAccess "domNN\DL-Info-ControleTotal"
+
+# Lister les sessions SMB ouvertes actuellement sur le serveur de fichiers
+Get-SmbSession | Select-Object ClientComputerName, ClientUserName, NumOpens
 ```
 
 ---
 
-## ⚙️ 4. Gestion des Services & Processus
+## 4. Diagnostics Système & Réseau
 
 ```powershell
-# Vérifier l'état d'un service (ex. Spouleur d'impression ou DNS)
-Get-Service -Name "Spooler", "DNS"
+# Tester la connectivité vers un port TCP précis (ex: port HTTPS de Windows Admin Center)
+Test-NetConnection -ComputerName "SRV1" -Port 443
 
-# Redémarrer un service planté
+# Tester le port LDAP (389) ou Kerberos (88) sur un contrôleur de domaine
+Test-NetConnection -ComputerName "CD1" -Port 389
+
+# Redémarrer un service distant
 Restart-Service -Name "Spooler" -Force
 
-# Configurer le démarrage d'un service en Automatique
-Set-Service -Name "W32Time" -StartupType Automatic
-```
-
----
-
-## 🌐 5. Administration à Distance (PowerShell Remoting)
-
-```powershell
-# Ouvrir une session interactive distante sur un serveur
-Enter-PSSession -ComputerName "SRV1"
-
-# Exécuter un script ou une commande en parallèle sur 20 serveurs
-Invoke-Command -ComputerName "CD1", "CD2", "SRV1" -ScriptBlock {
-    Get-Service -Name "W32Time" | Select-Object PSComputerName, Status, StartType
-}
+# Exécuter une commande à distance via PowerShell Remoting (WinRM)
+Invoke-Command -ComputerName "SRV1" -ScriptBlock { Get-Service -Name "WAC*" }
 ```

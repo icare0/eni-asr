@@ -1,27 +1,44 @@
-# Administration Windows
+# Module — Administration Windows Server & Active Directory
 
-* **Dates :** Du 16/11/2026 au 20/11/2026 (35 heures)
-* **Lieu :** ENI École Informatique (Saint-Herblain) — Présentiel
-* **Formateur / Source :** Support pédagogique ASR ENI (Maha Naceur)
+* **Période :** Du 16/11/2026 au 20/11/2026 (35 heures)
+* **Centre :** ENI École Informatique (Saint-Herblain) — Cursus ASR
+* **Périmètre technique :** Windows Server 2022, Active Directory Domain Services (AD DS), DNS, Storage Spaces, Modèle AGDLP, Stratégies de Groupe (GPO), Sécurité des identités (PSO).
 
-Ce module traite du cycle de vie complet d'une infrastructure d'entreprise sous Windows Server 2022 et Active Directory Domain Services (AD DS) : maquettage virtuel, métrologie, promotion de contrôleurs, rôles FSMO, modèle AGDLP et durcissement par stratégies de groupe (GPO).
+Ce module d'infrastructure est articulé en deux composantes complémentaires :
+1. **La partie Cours (Théorie & Architecture)** : Présentation approfondie des concepts, des normes Microsoft, du fonctionnement interne des protocoles et du dimensionnement d'infrastructure.
+2. **Le Coin TP (Synthèse des Réalisations)** : Synthèse exécutive et valorisante des ateliers pratiques menés sur la maquette virtualisée VMware (CD1, CD2, SRV1, Win-CL1), sans tutoriel verbeux de clics de souris.
 
 ---
 
-## Sommaire du Module
+## 1. Cours Théoriques & Fondations d'Architecture
 
-| Chapitre | Thématiques & Notions Clés | Fiche de cours |
+Ces dossiers techniques détaillent les mécanismes internes et les règles de conception pour un environnement de production d'entreprise :
+
+| Chapitre | Thématiques & Notions Fondamentales | Accès au cours |
 | :--- | :--- | :--- |
-| **01. Métrologie & Supervision** | Virtualisation VMware en Host-Only, compteurs Perfmon (CPU, RAM, Disque), seuils d'alerte, Windows Admin Center sur port HTTPS:443 et audit des événements `MsiInstaller`. | [Consulter le cours](metrologie-supervision.md) |
-| **02. Active Directory & FSMO** | Promotion de CD1 en PowerShell (`Install-ADDSForest`), ajout du réplica CD2 pour tolérance aux pannes, DNS intégré et gestion des 5 rôles FSMO (`netdom query fsmo`). | [Consulter le cours](active-directory-fsmo.md) |
-| **03. Gouvernance d'Annuaire & OU** | Arborescence en 3 niveaux (Société ASR), gabarits de comptes modèles, filtres LDAP bitwise pour comptes inactifs et gestion des sites physiques dans `dssite.msc`. | [Consulter le cours](gouvernance-annuaire.md) |
-| **04. Stockage SMB & Modèle AGDLP** | Pools résilients Storage Spaces (miroir), cumul des autorisations NTFS et partage, matrice complète AGDLP, délégations administratives et serveur d'impression réseau. | [Consulter le cours](stockage-agdlp.md) |
-| **05. Stratégies GPO & Sécurité PSO** | Ordre d'application LSDOU, politiques de mots de passe affinées (PSO en PowerShell), magasin central PolicyDefinitions dans SYSVOL et audit `gpresult`. | [Consulter le cours](gpo-securite-pso.md) |
+| **1. Métrologie & Supervision** | Qualification de la charge serveur, compteurs critiques CPU / RAM / Disque sous `perfmon`, collecte programmée, architecture sans agent de Windows Admin Center et audit d'événements `MsiInstaller`. | [Consulter le cours](cours/01-metrologie-supervision.md) |
+| **2. Active Directory & Rôles FSMO** | Architecture logique et physique de l'annuaire, dépendances DNS, réplication multi-maîtres, résilience par second DC et répartition stratégique des 5 rôles FSMO. | [Consulter le cours](cours/02-active-directory-fsmo.md) |
+| **3. Gouvernance d'Annuaire & UO** | Règles de conception des Unités d'Organisation, gestion du cycle de vie des identités via des comptes modèles, étendues de groupes et topologie multi-sites Active Directory. | [Consulter le cours](cours/03-gouvernance-annuaire.md) |
+| **4. Stockage d'Entreprise & AGDLP** | Espaces de stockage logiciels résilients (*Storage Spaces*), cumul Partages SMB / ACL NTFS, implémentation stricte du modèle AGDLP et impact sur les jetons Kerberos (*Token Bloat*). | [Consulter le cours](cours/04-stockage-agdlp.md) |
+| **5. Stratégies de Groupe & PSO** | Moteur de traitement LSDOU, gestion des conflits, magasin central SYSVOL `PolicyDefinitions`, et politiques de mot de passe à granularité fine (*Password Settings Objects* - PSO). | [Consulter le cours](cours/05-gpo-securite-pso.md) |
 
 ---
 
-## Fiches Pratiques Associées
+## 2. Coin TP — Synthèse des Réalisations en Laboratoire
+
+Ces fiches récapitulent les architectures déployées, les choix de configuration et les commandes de test validées en atelier pratique :
+
+* **[Présentation de la Maquette & Topologie de Lab](tp/README.md)** : Réseau virtuel privé Host-Only `192.168.0.0/16`, rôles et dimensionnement des 4 machines virtuelles (CD1, CD2, SRV1, Win-CL1).
+* **[TP 01 : Infrastructure & Métrologie Système](tp/tp01-infrastructure-metrologie.md)** : Déploiement du banc d'essai, collecte programmée `CompteurBase-AAMMJJ`, passerelle Windows Admin Center et audit d'événements.
+* **[TP 02 : Contrôleurs de Domaine & FSMO](tp/tp02-domaine-fsmo.md)** : Promotion du domaine racine `domNN.ad`, haute disponibilité avec le second contrôleur réplica CD2, RSAT sur Windows 11 et transfert des rôles RID / PDC.
+* **[TP 03 : Organisation de l'Annuaire Société ASR](tp/tp03-annuaire-societe-asr.md)** : Arborescence UO à 3 niveaux, modèles de comptes avec restrictions d'horaires, groupes de sécurité et sites Siège / Agence.
+* **[TP 04 : Stockage Résilient & Partages AGDLP](tp/tp04-stockage-partages-agdlp.md)** : Agrégation de 3 disques SCSI en pool miroir sur SRV1, partages Documentation / Compta / Info$, matrice de droits AGDLP et serveur d'impression Dell 5210CN.
+* **[TP 05 : Déploiement de GPO & Sécurité PSO](tp/tp05-gpo-securite-pso.md)** : Magasin central ADMX dans SYSVOL, GPO de sécurité et restriction, stratégie affinée PSO pour l'informatique et validation par `gpresult`.
+
+---
+
+## 3. Mémos Techniques & Référentiels
 
 * [Consoles MMC et raccourcis d'administration](/memos/consoles-mmc-raccourcis.md)
-* [Cheatsheet PowerShell Administrateur](/memos/powershell-cheatsheet.md)
-* [Commandes de diagnostic réseau et Active Directory](/memos/commandes-reseau-diagnostic.md)
+* [Cheatsheet PowerShell Active Directory & Système](/memos/powershell-cheatsheet.md)
+* [Commandes de diagnostic réseau et annuaire](/memos/commandes-reseau-diagnostic.md)

@@ -1,31 +1,48 @@
 # Documentation ASR — Administrateur Système & Réseau
 
-Portail de documentation et fiches techniques d'exploitation pour le cursus ASR de l'ENI (Saint-Herblain).
+Portail de référence technique et synthèse des travaux pratiques pour le cursus ASR de l'ENI École Informatique (Saint-Herblain).
 
 * **Stagiaire :** Antoine BERNARD
-* **Formation :** Titre Professionnel Administrateur·rice Système et Réseau (Niveau 6, RNCP)
-* **Période :** Du 16/11/2026 au 27/10/2028
-* **Planning complet :** [Consulter le calendrier officiel de formation](calendrier.md)
+* **Formation :** Titre Professionnel Administrateur·rice Système et Réseau (Niveau 6 / Bac+3)
+* **Période de cursus :** Du 16/11/2026 au 27/10/2028 (1 092 heures en centre de formation)
+* **Planning officiel :** [Consulter le calendrier complet de formation (2026-2028)](calendrier.md)
 
 ---
 
-## Module Actuel : Administration Windows (16/11 - 20/11/2026)
+## Module en Cours : Administration Windows Server (16/11 - 20/11/2026)
 
-Ce premier module de 35 heures couvre l'architecture, le déploiement et la sécurisation d'une infrastructure d'entreprise sous Windows Server 2022 et Active Directory Domain Services (AD DS).
+Ce premier module de 35 heures est consacré à l'architecture, au déploiement et à la sécurisation d'une infrastructure d'entreprise sous Windows Server 2022 et Active Directory Domain Services (AD DS).
 
-| Chapitre | Thématiques abordées | Fiche de cours |
+La documentation est structurée en deux espaces complémentaires :
+
+### 1. Cours Théoriques & Fondations Techniques
+
+Un corpus exhaustif expliquant les concepts, les mécanismes internes, les normes d'architecture et les bonnes pratiques d'ingénierie système :
+
+| Chapitre | Concepts & Notions Clés | Fiche de cours |
 | :--- | :--- | :--- |
-| **01. Métrologie & Supervision** | Virtualisation VMware en Host-Only, analyse de performances Perfmon (compteurs CPU/RAM/Disque), Windows Admin Center sur port HTTPS:443 et audit d'événements. | [Consulter le cours](administration-windows/metrologie-supervision.md) |
-| **02. Active Directory & Rôles FSMO** | Déploiement en PowerShell (`Install-ADDSForest`), contrôleur réplica CD2 pour la haute disponibilité, DNS intégré et gestion des 5 rôles FSMO (`netdom query fsmo`). | [Consulter le cours](administration-windows/active-directory-fsmo.md) |
-| **03. Gouvernance d'Annuaire & OU** | Arborescence d'OU hiérarchique en 3 niveaux (Société ASR), gabarits de comptes modèles, filtres LDAP bitwise pour comptes inactifs et gestion des sites physiques dans `dssite.msc`. | [Consulter le cours](administration-windows/gouvernance-annuaire.md) |
-| **04. Stockage SMB & Modèle AGDLP** | Pools de stockage résilients Storage Spaces (miroir), cumul des autorisations NTFS et partage, matrice de droits AGDLP, délégations administratives, serveur d'impression. | [Consulter le cours](administration-windows/stockage-agdlp.md) |
-| **05. Stratégies GPO & Sécurité PSO** | Ordre d'application LSDOU, politiques de mots de passe affinées (PSO en PowerShell), magasin central PolicyDefinitions dans SYSVOL et audit client avec `gpresult`. | [Consulter le cours](administration-windows/gpo-securite-pso.md) |
+| **1. Métrologie & Supervision** | Qualification des charges serveur, compteurs critiques (CPU, RAM, Disque, Réseau) sous `perfmon`, ensembles de collecteurs automatisés, Windows Admin Center et audit d'événements. | [Accéder au cours](administration-windows/cours/01-metrologie-supervision.md) |
+| **2. Active Directory & Rôles FSMO** | Architecture d'annuaire LDAP/DNS/Kerberos, promotion PowerShell, tolérance aux pannes par contrôleur réplica et gouvernance des 5 rôles FSMO. | [Accéder au cours](administration-windows/cours/02-active-directory-fsmo.md) |
+| **3. Gouvernance d'Annuaire & UO** | Conception d'arborescences d'UO, gestion du cycle de vie des identités par modèles avec restrictions horaires, stratégie de groupes et topologie multi-sites. | [Accéder au cours](administration-windows/cours/03-gouvernance-annuaire.md) |
+| **4. Stockage d'Entreprise & AGDLP** | Espaces de stockage logiciels résilients (*Storage Spaces*), sécurité cumulée SMB/NTFS, implémentation stricte du modèle AGDLP et jetons Kerberos. | [Accéder au cours](administration-windows/cours/04-stockage-agdlp.md) |
+| **5. Stratégies GPO & Sécurité PSO** | Moteur de traitement LSDOU, gestion des conflits, magasin central SYSVOL `PolicyDefinitions` et politiques de mot de passe à granularité fine (*PSO*). | [Accéder au cours](administration-windows/cours/05-gpo-securite-pso.md) |
+
+### 2. Coin TP — Synthèse des Ateliers en Laboratoire
+
+Une synthèse claire et valorisante de ce qui a été réalisé durant les travaux pratiques sur la maquette virtuelle VMware (machines `CD1`, `CD2`, `SRV1`, `Win-CL1`) :
+
+* **[Présentation de la Maquette & Topologie de Lab](administration-windows/tp/README.md)** : Réseau Host-Only `192.168.0.0/16`, rôles et caractéristiques des 4 machines virtuelles.
+* **[TP 01 : Création de l'infrastructure & Métrologie](administration-windows/tp/tp01-infrastructure-metrologie.md)** : Configuration IP, collecteur automatisé `CompteurBase-AAMMJJ` sur CD1, passerelle WAC sur SRV1 et audit d'installation `MsiInstaller`.
+* **[TP 02 : Création du domaine Active Directory & FSMO](administration-windows/tp/tp02-domaine-fsmo.md)** : Promotion du domaine `domNN.ad`, haute disponibilité avec CD2, déploiement RSAT sur Windows 11 et transfert des rôles FSMO RID et PDC.
+* **[TP 03 : Structuration de l'annuaire Société ASR](administration-windows/tp/tp03-annuaire-societe-asr.md)** : Arborescence d'UO à 3 niveaux, modèles de comptes avec restrictions d'horaires, groupes globaux de sécurité et modélisation des sites Siège / Agence.
+* **[TP 04 : Espaces de stockage résilients & Modèle AGDLP](administration-windows/tp/tp04-stockage-partages-agdlp.md)** : Pool miroir de 3 disques SCSI sur SRV1, partages Documentation / Compta / Info$, matrice de droits AGDLP et serveur d'impression Dell 5210CN.
+* **[TP 05 : Stratégies de groupe (GPO) & Durcissement PSO](administration-windows/tp/tp05-gpo-securite-pso.md)** : Magasin central ADMX dans SYSVOL, GPO de sécurité et restriction, stratégie affinée PSO pour l'informatique et validation par `gpresult`.
 
 ---
 
-## Mémos Pratiques & Commandes d'Exploitation
+## Mémos Pratiques & Référentiels d'Exploitation
 
 * [Consoles MMC et raccourcis d'administration](memos/consoles-mmc-raccourcis.md) : Fichiers `.msc`, applets `.cpl` et raccourcis clavier pour Server Manager et les sessions RDP.
-* [Cheatsheet PowerShell Administrateur](memos/powershell-cheatsheet.md) : Commandes pour Active Directory, le stockage, les partages et l'exécution distante.
+* [Cheatsheet PowerShell Administrateur](memos/powershell-cheatsheet.md) : Commandes de gestion pour Active Directory, le stockage, les partages et l'administration distante.
 * [Commandes de diagnostic réseau et Active Directory](memos/commandes-reseau-diagnostic.md) : Outils de vérification et de santé (`netdom`, `nltest`, `Test-NetConnection`, `repadmin`, `dcdiag`).
-* [Index des commandes et notions](index-thematique.md) : Accès rapide par mot-clé (`FSMO`, `AGDLP`, `PSO`, `WAC`, `Storage Spaces`, etc.).
+* [Index des commandes et notions](index-thematique.md) : Index alphabétique pour retrouver instantanément un concept ou une commande (`FSMO`, `AGDLP`, `PSO`, `WAC`, `Storage Spaces`, etc.).
