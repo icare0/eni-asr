@@ -1,4 +1,5 @@
 * [🏠 Accueil](/)
+* [🔍 Index Thématique](/index-thematique.md)
 * [📘 Année 1](/annee-1/)
 * [🔬 Ateliers TP](/ateliers/)
 * [🚀 Année 2](/annee-2/)
