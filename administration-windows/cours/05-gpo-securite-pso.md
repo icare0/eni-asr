@@ -1,3 +1,5 @@
+[← Retour aux Cours](README.md) | [Accueil](../../README.md)
+
 # 5. Stratégies de Groupe (GPO), Sécurité des Mots de Passe (PSO) & SYSVOL
 
 Ce chapitre analyse le fonctionnement du moteur des Stratégies de Groupe (*Group Policy Objects* - GPO), l'ordonnancement de leur traitement, le déploiement du magasin central SYSVOL et la mise en œuvre des politiques de mot de passe à granularité fine (**PSO**).
@@ -135,3 +137,8 @@ gpresult /h C:\resultat-gpo.html
 ```
 
 Le rapport HTML détaille pour chaque paramètre la GPO victorieuse, les GPO écrasées et les motifs de rejet (ex: *Refusé par filtrage de sécurité*, *Filtre WMI non satisfait*, ou *Héritage bloqué*).
+
+---
+
+[← Chapitre précédent : 4. Stockage d'Entreprise & AGDLP](04-stockage-agdlp.md) | [Atelier pratique associé : TP 05](../tp/tp05-gpo-securite-pso.md) | [Sommaire général des Cours](README.md)
+

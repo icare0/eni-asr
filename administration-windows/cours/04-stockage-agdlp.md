@@ -1,3 +1,5 @@
+[← Retour aux Cours](README.md) | [Accueil](../../README.md)
+
 # 4. Espaces de Stockage Résilients, Partages SMB & Modèle AGDLP
 
 Ce chapitre détaille la mise en œuvre du stockage logiciel sous Windows Server, les mécanismes de sécurité combinant partages réseau SMB et listes de contrôle d'accès NTFS, ainsi que l'application rigoureuse du modèle d'habilitation **AGDLP**.
@@ -127,3 +129,8 @@ Le modèle **AGDLP** (*Accounts → Global Groups → Domain Local Groups → Pe
    * Si des groupes Domaine Local étaient multipliés sur les utilisateurs, le jeton dépasserait la taille maximale autorisée par HTTP et RPC (générant des erreurs d'authentification réseau incompréhensibles).
 3. **Évolutivité inter-domaines** :
    * Si une entreprise crée une forêt multi-domaines ou réalise une fusion, les groupes globaux d'autres domaines peuvent être directement ajoutés dans les groupes Domaine Local locaux sans recalculer l'ensemble des ACL NTFS sur les téraoctets de données du serveur.
+
+---
+
+[← Chapitre précédent : 3. Gouvernance d'Annuaire & UO](03-gouvernance-annuaire.md) | [Atelier pratique associé : TP 04](../tp/tp04-stockage-partages-agdlp.md) | [Chapitre suivant : 5. Stratégies GPO & Sécurité PSO →](05-gpo-securite-pso.md)
+

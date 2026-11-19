@@ -1,3 +1,5 @@
+[← Retour aux Cours](README.md) | [Accueil](../../README.md)
+
 # 3. Gouvernance d'Annuaire, Unités d'Organisation & Identités
 
 Ce chapitre développe les règles d'architecture nécessaires pour concevoir une arborescence Active Directory pérenne, industrialiser la création des comptes utilisateurs par modèles et maîtriser la topologie des sites physiques et des groupes de sécurité.
@@ -119,3 +121,8 @@ Alors que l'arborescence des domaines et des UO constitue la structure **logique
 2. **Optimisation de la réplication** :
    * **Intra-site** : Réplication rapide, déclenchée par notification immédiate (délai de 15 secondes), données non compressées.
    * **Inter-sites** : Réplication planifiée, données fortement compressées pour économiser la bande passante inter-sites.
+
+---
+
+[← Chapitre précédent : 2. Active Directory & Rôles FSMO](02-active-directory-fsmo.md) | [Atelier pratique associé : TP 03](../tp/tp03-annuaire-societe-asr.md) | [Chapitre suivant : 4. Stockage d'Entreprise & AGDLP →](04-stockage-agdlp.md)
+

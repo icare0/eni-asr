@@ -1,3 +1,5 @@
+[← Retour à l'Accueil](../README.md)
+
 # Module — Administration Windows Server & Active Directory
 
 * **Période :** Du 16/11/2026 au 20/11/2026 (35 heures)
@@ -39,6 +41,6 @@ Ces fiches récapitulent les architectures déployées, les choix de configurati
 
 ## 3. Mémos Techniques & Référentiels
 
-* [Consoles MMC et raccourcis d'administration](/memos/consoles-mmc-raccourcis.md)
-* [Cheatsheet PowerShell Active Directory & Système](/memos/powershell-cheatsheet.md)
-* [Commandes de diagnostic réseau et annuaire](/memos/commandes-reseau-diagnostic.md)
+* [Consoles MMC et raccourcis d'administration](../memos/consoles-mmc-raccourcis.md)
+* [Cheatsheet PowerShell Active Directory & Système](../memos/powershell-cheatsheet.md)
+* [Commandes de diagnostic réseau et annuaire](../memos/commandes-reseau-diagnostic.md)

@@ -1,3 +1,5 @@
+[← Retour aux Cours](README.md) | [Accueil](../../README.md)
+
 # 2. Active Directory Domain Services (AD DS) & Rôles FSMO
 
 Ce chapitre analyse en profondeur le fonctionnement interne des services d'annuaire Active Directory Domain Services (AD DS), les mécanismes de réplication multi-maîtres et la gouvernance des 5 rôles FSMO indispensables à la stabilité de l'infrastructure d'entreprise.
@@ -120,3 +122,8 @@ Move-ADDirectoryServerOperationMasterRole -Identity "CD2" `
 # Saisir de force un rôle en cas de crash irréversible (Option -Force)
 # Move-ADDirectoryServerOperationMasterRole -Identity "CD2" -OperationMasterRole PDCEmulator -Force
 ```
+
+---
+
+[← Chapitre précédent : 1. Métrologie & Supervision](01-metrologie-supervision.md) | [Atelier pratique associé : TP 02](../tp/tp02-domaine-fsmo.md) | [Chapitre suivant : 3. Gouvernance d'Annuaire & UO →](03-gouvernance-annuaire.md)
+

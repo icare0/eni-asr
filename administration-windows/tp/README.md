@@ -1,3 +1,5 @@
+[← Administration Windows](../README.md) | [Accueil](../../README.md)
+
 # Coin TP — Synthèse des Ateliers Pratiques en Laboratoire
 
 Cette section documente les réalisations concrètes effectuées en travaux pratiques (TP) sur l'infrastructure de virtualisation VMware Workstation durant le module d'administration Windows Server.

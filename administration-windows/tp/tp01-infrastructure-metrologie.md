@@ -1,3 +1,5 @@
+[← Retour aux TP](README.md) | [Accueil](../../README.md)
+
 # TP 01 — Création de l'Infrastructure & Métrologie Système
 
 Fiche de synthèse de l'atelier pratique n°1 : déploiement de l'environnement virtuel de laboratoire, qualification des performances système et mise en place de la supervision.
@@ -61,3 +63,8 @@ Get-ChildItem -Path "C:\PerfLogs" -Recurse -Filter "*.blg"
 Get-WinEvent -FilterHashtable @{LogName='Application'; ProviderName='MsiInstaller'} -MaxEvents 5 | 
     Select-Object TimeCreated, Id, Message | Format-List
 ```
+
+---
+
+[← Sommaire des TP](README.md) | [Cours théorique associé : Métrologie](../cours/01-metrologie-supervision.md) | [TP suivant : TP 02 →](tp02-domaine-fsmo.md)
+

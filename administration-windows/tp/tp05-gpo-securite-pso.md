@@ -1,3 +1,5 @@
+[← Retour aux TP](README.md) | [Accueil](../../README.md)
+
 # TP 05 — Stratégies de Groupe (GPO) & Durcissement PSO
 
 Fiche de synthèse de l'atelier pratique n°5 : déploiement du magasin central SYSVOL, industrialisation de politiques de durcissement par GPO, stratégies de mot de passe affinées (PSO) et diagnostic d'application.
@@ -75,3 +77,8 @@ Get-ADFineGrainedPasswordPolicy -Identity "PSO-Informatique" |
 Get-ChildItem -Path "\\domNN.ad\SYSVOL\domNN.ad\Policies\PolicyDefinitions" -Filter "*.admx" | 
     Select-Object -First 5 Name
 ```
+
+---
+
+[← TP précédent : TP 04](tp04-stockage-partages-agdlp.md) | [Cours théorique associé : Stratégies GPO & PSO](../cours/05-gpo-securite-pso.md) | [Sommaire général des TP](README.md)
+

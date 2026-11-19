@@ -1,3 +1,5 @@
+[← Retour aux TP](README.md) | [Accueil](../../README.md)
+
 # TP 03 — Structuration de l'Annuaire & Société ASR
 
 Fiche de synthèse de l'atelier pratique n°3 : organisation de l'arborescence d'Unités d'Organisation, gestion industrielle des identités par modèles, stratégie de groupes globaux et modélisation multi-sites.
@@ -69,3 +71,8 @@ Get-ADUser -Identity "dgrenier" -Properties Department, City, AccountExpirationD
 # Rechercher tous les comptes d'utilisateurs désactivés dans l'arborescence
 Search-ADAccount -AccountDisabled -UsersOnly | Select-Object Name, SamAccountName, DistinguishedName
 ```
+
+---
+
+[← TP précédent : TP 02](tp02-domaine-fsmo.md) | [Cours théorique associé : Gouvernance & UO](../cours/03-gouvernance-annuaire.md) | [TP suivant : TP 04 →](tp04-stockage-partages-agdlp.md)
+

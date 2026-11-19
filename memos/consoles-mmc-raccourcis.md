@@ -1,3 +1,5 @@
+[← Retour aux Mémos](README.md) | [Accueil](../README.md)
+
 # Consoles MMC, Applets & Raccourcis Clavier
 
 Ce mémento rassemble l'ensemble des commandes d'exécution directe (`Windows + R`) pour ouvrir instantanément les consoles MMC et applets de configuration, ainsi que les raccourcis clavier indispensables sous Windows Server et en session Bureau à distance (RDP).

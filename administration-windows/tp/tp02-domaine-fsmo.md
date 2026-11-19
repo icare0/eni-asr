@@ -1,3 +1,5 @@
+[← Retour aux TP](README.md) | [Accueil](../../README.md)
+
 # TP 02 — Création du Domaine Active Directory & Rôles FSMO
 
 Fiche de synthèse de l'atelier pratique n°2 : promotion du premier contrôleur de domaine, intégration de la haute disponibilité avec un contrôleur réplica, jonction des clients et répartition des rôles FSMO.
@@ -61,3 +63,8 @@ nslookup -type=srv _kerberos._tcp.dc._msdcs.domNN.ad
 # Vérifier la présence des contrôleurs de domaine dans l'annuaire
 Get-ADDomainController -Filter * | Select-Object Name, IPv4Address, Site, IsGlobalCatalog
 ```
+
+---
+
+[← TP précédent : TP 01](tp01-infrastructure-metrologie.md) | [Cours théorique associé : Active Directory & FSMO](../cours/02-active-directory-fsmo.md) | [TP suivant : TP 03 →](tp03-annuaire-societe-asr.md)
+

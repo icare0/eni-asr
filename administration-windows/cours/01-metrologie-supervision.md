@@ -1,3 +1,5 @@
+[← Retour aux Cours](README.md) | [Accueil](../../README.md)
+
 # 1. Métrologie Système, Analyse de Performances & Supervision
 
 Ce chapitre traite de la qualification technique d'un serveur d'entreprise : dimensionnement matériel, métrologie continue des sous-systèmes critiques, administration web moderne sans agent via Windows Admin Center et audit des journaux d'événements.
@@ -98,3 +100,8 @@ Dans un journal contenant plusieurs dizaines de milliers d'entrées, l'administr
 * **Codes d'événement d'installation Windows Installer (`MsiInstaller`)** :
   * *Code 1033* ou *11707* : Confirmation de fin d'installation réussie avec restitution du nom du produit, de sa version et de son code d'identification unique (GUID).
   * *Code 11708* : Échec d'installation avec motif d'interruption.
+
+---
+
+[← Sommaire des Cours](README.md) | [Atelier pratique associé : TP 01](../tp/tp01-infrastructure-metrologie.md) | [Chapitre suivant : 2. Active Directory & Rôles FSMO →](02-active-directory-fsmo.md)
+

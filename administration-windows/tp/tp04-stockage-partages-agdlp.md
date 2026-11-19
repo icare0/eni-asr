@@ -1,3 +1,5 @@
+[← Retour aux TP](README.md) | [Accueil](../../README.md)
+
 # TP 04 — Espaces de Stockage Résilients & Modèle AGDLP
 
 Fiche de synthèse de l'atelier pratique n°4 : agrégation de disques physiques en pool Storage Spaces résilient, sécurisation des partages SMB par le modèle AGDLP, délégations d'annuaire et gestion d'un serveur d'impression.
@@ -68,3 +70,8 @@ Get-Acl -Path "E:\DATA\Compta" | Select-Object -ExpandProperty Access |
 # Tester la connexion au partage masqué depuis le client d'administration
 Test-Path "\\SRV1\Info$"
 ```
+
+---
+
+[← TP précédent : TP 03](tp03-annuaire-societe-asr.md) | [Cours théorique associé : Stockage & AGDLP](../cours/04-stockage-agdlp.md) | [TP suivant : TP 05 →](tp05-gpo-securite-pso.md)
+

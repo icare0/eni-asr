@@ -1,3 +1,5 @@
+[← Retour aux Mémos](README.md) | [Accueil](../README.md)
+
 # Commandes Réseau, Active Directory & Diagnostic
 
 En cas d'incident en entreprise (lenteur d'authentification, échec d'accès à un partage, problème de réplication), voici la boîte à outils des commandes de diagnostic indispensables.
