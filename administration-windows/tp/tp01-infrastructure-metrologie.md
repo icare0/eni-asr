@@ -66,5 +66,5 @@ Get-WinEvent -FilterHashtable @{LogName='Application'; ProviderName='MsiInstalle
 
 ---
 
-[← Sommaire des TP](README.md) | [Cours théorique associé : Métrologie](../cours/01-metrologie-supervision.md) | [TP suivant : TP 02 →](tp02-domaine-fsmo.md)
+[← Sommaire des TP](README.md) | [Cours théorique associé : Métrologie & Supervision](../cours/05-metrologie-supervision-evenements.md) | [TP suivant : TP 02 →](tp02-domaine-fsmo.md)
 

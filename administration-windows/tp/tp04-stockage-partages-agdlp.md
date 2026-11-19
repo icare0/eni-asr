@@ -73,5 +73,5 @@ Test-Path "\\SRV1\Info$"
 
 ---
 
-[← TP précédent : TP 03](tp03-annuaire-societe-asr.md) | [Cours théorique associé : Stockage & AGDLP](../cours/04-stockage-agdlp.md) | [TP suivant : TP 05 →](tp05-gpo-securite-pso.md)
+[← TP précédent : TP 03](tp03-annuaire-societe-asr.md) | [Cours théorique associé : Stockage & AGDLP](../cours/03-stockage-partages-agdlp.md) | [TP suivant : TP 05 →](tp05-gpo-securite-pso.md)
 

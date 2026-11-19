@@ -17,9 +17,9 @@ Ce premier module de 35 heures traite de l'architecture, du déploiement et de l
 ```
 eni-asr/
 ├── administration-windows/
-│   ├── cours/    <-- Concepts, théories, protocoles et architectures
+│   ├── cours/    <-- Concepts généraux, théories, protocoles et architectures
 │   └── tp/       <-- Synthèse valorisante des 5 ateliers réalisés en Lab
-├── memos/        <-- Consoles MMC, Cheatsheet PowerShell, Commandes réseau
+├── memos/        <-- Consoles MMC, Cheatsheet PowerShell, Commandes diagnostic
 ├── calendrier.md <-- Planning officiel 2026-2028
 └── index-thematique.md
 ```
@@ -28,15 +28,15 @@ eni-asr/
 
 ### 1. Cours Théoriques & Fondations Techniques
 
-Un corpus structuré expliquant les mécanismes internes, les normes d'architecture et les règles d'ingénierie système :
+Un corpus structuré expliquant les mécanismes internes et les règles d'ingénierie système, selon une progression logique :
 
 | Chapitre | Concepts & Notions Clés | Fiche de cours |
 | :--- | :--- | :--- |
-| **01. Métrologie & Supervision** | Qualification des charges serveur, compteurs critiques (CPU, RAM, Disque, Réseau) sous `perfmon`, ensembles de collecteurs automatisés, Windows Admin Center et audit d'événements `MsiInstaller`. | [Lire le cours](administration-windows/cours/01-metrologie-supervision.md) |
-| **02. Active Directory & Rôles FSMO** | Architecture d'annuaire LDAP/DNS/Kerberos, promotion PowerShell, tolérance aux pannes par contrôleur réplica et gouvernance des 5 rôles FSMO. | [Lire le cours](administration-windows/cours/02-active-directory-fsmo.md) |
-| **03. Gouvernance d'Annuaire & UO** | Conception d'arborescences d'UO, gestion du cycle de vie des identités par modèles avec restrictions horaires, stratégie de groupes et topologie multi-sites. | [Lire le cours](administration-windows/cours/03-gouvernance-annuaire.md) |
-| **04. Stockage d'Entreprise & AGDLP** | Espaces de stockage logiciels résilients (*Storage Spaces*), sécurité cumulée SMB/NTFS, implémentation stricte du modèle AGDLP et jetons Kerberos. | [Lire le cours](administration-windows/cours/04-stockage-agdlp.md) |
-| **05. Stratégies GPO & Sécurité PSO** | Moteur de traitement LSDOU, gestion des conflits, magasin central SYSVOL `PolicyDefinitions` et politiques de mot de passe à granularité fine (*PSO*). | [Lire le cours](administration-windows/cours/05-gpo-securite-pso.md) |
+| **01. Active Directory & Rôles FSMO** | Architecture d'annuaire d'entreprise vs Workgroup, dépendances DNS/Kerberos, réplication multi-maîtres et gouvernance des 5 rôles FSMO. | [Lire le cours](administration-windows/cours/01-active-directory-architecture-fsmo.md) |
+| **02. Gouvernance d'Annuaire & UO** | Conception d'arborescences d'UO à 3 niveaux, gestion du cycle de vie des identités par modèles avec restrictions horaires, stratégie de groupes et topologie multi-sites. | [Lire le cours](administration-windows/cours/02-gouvernance-annuaire-identites.md) |
+| **03. Stockage d'Entreprise & AGDLP** | Espaces de stockage logiciels résilients (*Storage Spaces*), sécurité cumulée SMB/NTFS, et implémentation stricte du modèle d'habilitation AGDLP. | [Lire le cours](administration-windows/cours/03-stockage-partages-agdlp.md) |
+| **04. Stratégies GPO & Sécurité PSO** | Moteur de traitement LSDOU, gestion des conflits, magasin central SYSVOL `PolicyDefinitions` et politiques de mot de passe à granularité fine (*PSO*). | [Lire le cours](administration-windows/cours/04-gpo-securite-pso.md) |
+| **05. Métrologie Système & Supervision** | Qualification des charges serveur, compteurs critiques (CPU, RAM, Disque, Réseau) sous `perfmon`, collecteurs automatisés, Windows Admin Center et audit d'événements. | [Lire le cours](administration-windows/cours/05-metrologie-supervision-evenements.md) |
 
 ---
 

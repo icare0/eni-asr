@@ -4,11 +4,11 @@
 
 * **COURS — Administration Windows**
   * [Vue d'ensemble du cours](administration-windows/README.md)
-  * [1. Métrologie et supervision](administration-windows/cours/01-metrologie-supervision.md)
-  * [2. Active Directory et rôles FSMO](administration-windows/cours/02-active-directory-fsmo.md)
-  * [3. Gouvernance d'annuaire et UO](administration-windows/cours/03-gouvernance-annuaire.md)
-  * [4. Stockage SMB et modèle AGDLP](administration-windows/cours/04-stockage-agdlp.md)
-  * [5. Stratégies GPO et sécurité PSO](administration-windows/cours/05-gpo-securite-pso.md)
+  * [1. Active Directory et rôles FSMO](administration-windows/cours/01-active-directory-architecture-fsmo.md)
+  * [2. Gouvernance d'annuaire et UO](administration-windows/cours/02-gouvernance-annuaire-identites.md)
+  * [3. Stockage SMB et modèle AGDLP](administration-windows/cours/03-stockage-partages-agdlp.md)
+  * [4. Stratégies GPO et sécurité PSO](administration-windows/cours/04-gpo-securite-pso.md)
+  * [5. Métrologie et supervision](administration-windows/cours/05-metrologie-supervision-evenements.md)
 
 * **COIN TP — Réalisations en Lab**
   * [Présentation de la maquette](administration-windows/tp/README.md)

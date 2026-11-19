@@ -66,5 +66,5 @@ Get-ADDomainController -Filter * | Select-Object Name, IPv4Address, Site, IsGlob
 
 ---
 
-[← TP précédent : TP 01](tp01-infrastructure-metrologie.md) | [Cours théorique associé : Active Directory & FSMO](../cours/02-active-directory-fsmo.md) | [TP suivant : TP 03 →](tp03-annuaire-societe-asr.md)
+[← TP précédent : TP 01](tp01-infrastructure-metrologie.md) | [Cours théorique associé : Active Directory & FSMO](../cours/01-active-directory-architecture-fsmo.md) | [TP suivant : TP 03 →](tp03-annuaire-societe-asr.md)
 

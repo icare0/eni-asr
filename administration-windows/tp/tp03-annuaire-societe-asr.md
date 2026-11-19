@@ -74,5 +74,5 @@ Search-ADAccount -AccountDisabled -UsersOnly | Select-Object Name, SamAccountNam
 
 ---
 
-[← TP précédent : TP 02](tp02-domaine-fsmo.md) | [Cours théorique associé : Gouvernance & UO](../cours/03-gouvernance-annuaire.md) | [TP suivant : TP 04 →](tp04-stockage-partages-agdlp.md)
+[← TP précédent : TP 02](tp02-domaine-fsmo.md) | [Cours théorique associé : Gouvernance & UO](../cours/02-gouvernance-annuaire-identites.md) | [TP suivant : TP 04 →](tp04-stockage-partages-agdlp.md)
 

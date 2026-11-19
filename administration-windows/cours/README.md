@@ -4,51 +4,44 @@
 
 Ce dossier regroupe les fondations théoriques, conceptuelles et architecturales du module **Administration système Windows** du cursus ASR (Administrateur Systèmes et Réseaux) de l'ENI.
 
----
-
-## Objectifs Pédagogiques du Module
-
-L'objectif de ce module est de maîtriser les composants fondamentaux d'une infrastructure d'entreprise sous Windows Server :
-
-* **Supervision et métrologie** : Comprendre le fonctionnement des sous-systèmes matériels (CPU, RAM, Disque, Réseau), savoir qualifier une charge système et auditer les événements Windows.
-* **Services d'annuaire (AD DS)** : Maîtriser l'architecture logique (forêt, domaine, catalogue global) et physique (sites, sous-réseaux) d'Active Directory, les mécanismes de réplication et la tolérance aux pannes via la répartition des rôles FSMO.
-* **Gouvernance et identités** : Savoir concevoir une arborescence d'Unités d'Organisation (UO) maintenable, gérer le cycle de vie des comptes et implémenter une stratégie de groupes cohérente.
-* **Stockage et partages de fichiers** : Déployer des espaces de stockage résilients logiciels (*Storage Spaces*), configurer des partages SMB et appliquer sans faille le modèle de droits d'accès **AGDLP**.
-* **Stratégies de groupe (GPO) et durcissement** : Automatiser la configuration et la sécurité des postes et serveurs via le moteur GPO (ordre LSDOU, filtrage WMI) et implémenter des stratégies de mot de passe affinées (**PSO**).
+Contrairement aux fiches de travaux pratiques qui décrivent des manipulations de laboratoire spécifiques, ces cours développent les principes universels d'ingénierie et d'administration d'une infrastructure d'entreprise.
 
 ---
 
-## Sommaire des Chapitres
+## Sommaire Pédagogique des Chapitres
 
-1. **[1. Métrologie, analyse de performances et Windows Admin Center](01-metrologie-supervision.md)**
-   * Sous-systèmes matériels et compteurs clés sous `perfmon`.
-   * Ensembles de collecteurs programmés et métrologie préventive.
-   * Architecture sans agent de Windows Admin Center (WAC).
-   * Audit et journaux d'événements Windows (`eventvwr`).
+La progression suit l'ordre logique d'ingénierie d'une infrastructure :
 
-2. **[2. Active Directory Domain Services (AD DS) et rôles FSMO](02-active-directory-fsmo.md)**
-   * Architecture logique (forêt, domaine, arbre) et dépendances DNS.
-   * Déploiement et promotion d'un contrôleur de domaine en PowerShell.
-   * Contrôleur réplica et résilience de l'annuaire.
-   * Les 5 rôles FSMO : fonctionnement, répartition stratégique et transfert/saisie (*seize*).
+1. **[1. Architecture Active Directory (AD DS) & Rôles FSMO](01-active-directory-architecture-fsmo.md)**
+   * Pourquoi un annuaire centralisé ? (Limites du Workgroup vs Domaine).
+   * Architecture logique (Forêt, Domaine, Arbre, Catalogue Global).
+   * Dépendances DNS intégrées (enregistrements SRV) et protocole d'authentification Kerberos.
+   * Haute disponibilité par réplication multi-maîtres et gestion des 5 rôles FSMO.
 
-3. **[3. Gouvernance d'annuaire, Unités d'Organisation et identités](03-gouvernance-annuaire.md)**
-   * Principes de conception des UO (portée GPO et délégation de droits).
-   * Gestion des comptes utilisateurs par modèles (*templates*) et restrictions d'horaires.
-   * Typologie et étendues des groupes (Global, Domaine Local, Universel).
-   * Topologie physique des sites Active Directory et réplication inter-sites.
+2. **[2. Gouvernance d'Annuaire, Unités d'Organisation & Identités](02-gouvernance-annuaire-identites.md)**
+   * Les deux impératifs de conception d'une UO (portée GPO et frontière de délégation).
+   * Méthodologie d'arborescence à 3 niveaux (séparation Utilisateurs / Ordinateurs).
+   * Industrialisation par comptes modèles désactivés et restrictions d'horaires.
+   * Stratégie des groupes de sécurité (étendues Globale, Domaine Local, Universelle) et sites physiques.
 
-4. **[4. Espaces de stockage, partages SMB et modèle AGDLP](04-stockage-agdlp.md)**
-   * Agrégation de disques et résilience logicielle (*Storage Spaces*).
-   * Points de montage NTFS vs lettres de lecteur.
-   * Barrières de sécurité : cumul Partages SMB et ACL NTFS.
-   * Mécanisme AGDLP : jetons d'accès Kerberos et simplification de maintenance.
+3. **[3. Stockage d'Entreprise, Partages SMB & Modèle AGDLP](03-stockage-partages-agdlp.md)**
+   * Virtualisation du stockage avec les Espaces de stockage logiciels (*Storage Spaces*).
+   * Types de résilience (Miroir, Parité) et points de montage NTFS dans un dossier.
+   * La règle d'or du cumul : Partages SMB vs Permissions NTFS.
+   * Le modèle universel d'habilitation AGDLP (prévention du gonflement de jeton Kerberos).
 
-5. **[5. Stratégies de groupe (GPO), SYSVOL et politiques PSO](05-gpo-securite-pso.md)**
-   * Ordre de traitement des stratégies (LSDOU) et résolution des conflits.
-   * Magasin central des modèles d'administration (`PolicyDefinitions` dans SYSVOL).
-   * Filtrage de sécurité, ciblage par éléments et filtres WMI.
-   * Politiques de mot de passe du domaine vs stratégies affinées (*Password Settings Objects* - PSO).
+4. **[4. Stratégies de Groupe (GPO) & Sécurité du Domaine (PSO)](04-gpo-securite-pso.md)**
+   * Fonctionnement du moteur de GPO et ordre hiérarchique LSDOU.
+   * Résolution des conflits (options Appliquer et Bloquer l'héritage).
+   * Magasin central des modèles d'administration dans SYSVOL (`PolicyDefinitions`).
+   * Pourquoi les GPO de mot de passe liées aux UO échouent et comment les PSO résolvent ce besoin.
+
+5. **[5. Métrologie Système, Analyse de Performances & Supervision](05-metrologie-supervision-evenements.md)**
+   * Qualification des performances et définition de la ligne de base (*Baseline*).
+   * Les 4 sous-systèmes critiques sous `perfmon` (CPU, RAM, Disque, Réseau) et seuils d'alerte.
+   * Ensembles de collecteurs de données programmés.
+   * Supervision web moderne sans agent via Windows Admin Center (WAC).
+   * Audit et diagnostic dans l'Observateur d'événements (`eventvwr.msc`).
 
 ---
 

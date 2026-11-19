@@ -80,5 +80,5 @@ Get-ChildItem -Path "\\domNN.ad\SYSVOL\domNN.ad\Policies\PolicyDefinitions" -Fil
 
 ---
 
-[← TP précédent : TP 04](tp04-stockage-partages-agdlp.md) | [Cours théorique associé : Stratégies GPO & PSO](../cours/05-gpo-securite-pso.md) | [Sommaire général des TP](README.md)
+[← TP précédent : TP 04](tp04-stockage-partages-agdlp.md) | [Cours théorique associé : Stratégies GPO & PSO](../cours/04-gpo-securite-pso.md) | [Sommaire général des TP](README.md)
 
